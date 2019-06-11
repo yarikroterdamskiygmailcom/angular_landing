@@ -1,0 +1,12 @@
+.search-bar {
+  margin: 20px;
+}
+.container {
+   display: inline-block;
+}
+.container .term {
+    margin-right: 20px;
+}
+.results-table {
+  width: 100%;
+}

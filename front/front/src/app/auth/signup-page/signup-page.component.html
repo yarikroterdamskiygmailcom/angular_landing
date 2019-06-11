@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <h1 class="text-center container-fluid">Sign up, please!</h1>
+      
+        <div *ngIf="networkingErr" class="alert alert-secondary" role="alert">
+          This email is already existed! Sign in or try the other email!!!
+        </div>
+
+        <form 
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="email">Email</label>            
+            <input 
+            formControlName="email"
+            type="email" 
+            id="email" 
+            name="password" 
+            class="form-control"             
+            >            
+            <span 
+            *ngIf="form.get('email').invalid && form.get('email').touched "
+             class="text-danger">
+            <span *ngIf="form.get('email').errors['required']" >Enter email</span>
+            <span *ngIf="form.get('email').errors['email']" >Enter correct email</span>
+            </span>
+                
+        </div>
+        <div class="form-group">
+            <label for="password" >Password</label>
+            <input 
+            formControlName="password"
+            type="password" id="password" 
+            name="password" 
+            class="form-control"  
+             >
+             <span 
+              *ngIf="form.get('password').invalid && form.get('password').touched "
+              class="text-danger">
+                  <span *ngIf="form.get('password').errors['required']">Enter password</span>
+                  <span *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+                    Password length should be more than {{form.get('password').errors['minlength']['requiredLength']}} characters.
+                    Now only {{form.get('password').errors['minlength']['actualLength']}} characters.
+                  </span>
+             </span>
+        </div>
+        <div *ngIf ="limits" class="text-danger"> Please point your age!</div>
+        <div class="custom-control custom-checkbox">
+            <input 
+            type="checkbox" class="custom-control-input" id="defaultUnchecked">
+            <label class="custom-control-label" for="defaultUnchecked" (click)="checked()">I am already 18 years old</label>
+        </div>
+       
+        <br>
+        <button *ngIf ="!limits" class="text-danger"
+        class="btn btn-primary" 
+        type="submit"
+        [disabled]="form.invalid"
+        >Sign up</button>
+      </form>
+  </div>
+</div>
+
+
+
+

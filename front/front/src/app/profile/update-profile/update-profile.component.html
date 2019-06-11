@@ -1,0 +1,136 @@
+<mat-error *ngIf="networkingErr">
+  Something went wrong please try again
+</mat-error>
+
+<div class="container">  
+<div class="row">
+  <div class="col-xs-12">
+    <h2>{{timenow}}</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button 
+          class="btn btn-success" 
+          type="submit"
+          [disabled]="!form.valid"
+          >Save</button> 
+          <button class="btn btn-danger"          
+           type="button"
+           (click)="onCancel()">Cancel</button> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control">
+            <span 
+              *ngIf="form.get('name').invalid && form.get('name').touched "
+              class="text-danger">
+                <span *ngIf="form.get('name').errors['required']">Enter name</span>
+                <span *ngIf="form.get('name').errors['minlength'] && form.get('name').errors['minlength']['requiredLength']">
+                  Project name length should be more than {{form.get('name').errors['minlength']['requiredLength']}} characters.
+                  Now only {{form.get('name').errors['minlength']['actualLength']}} characters.
+                </span>
+          </span>
+          </div>
+        </div>
+      </div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose your birth date" 
+                    
+            id="birthDate"
+            formControlName="birthDate"
+            class="form-control">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker   #picker></mat-datepicker>
+      </mat-form-field>  
+      
+      
+      
+     
+      <h3>Add new time zone</h3>
+                <div class="row">          
+                  <div class="col-xs-12 form-group">  
+                    <select 
+                      formControlName="timezone"
+                      id="inputState" 
+                      class="form-control">                 
+                      <option selected>Choose Time Zone</option>         
+                      <option                
+                            [value]="timezone" 
+                            *ngFor="let timezone of timeZones">{{timezone}}</option>                                       
+                    </select>                      
+                  </div>  
+                </div>
+                <h3>Add avatar</h3>
+                <div class="row">
+                  <div  class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2"> 
+                   <div class="text-center container-fluid"> 
+                    <div class="form-group">             
+                      <input
+                      type="file"
+                      color="primary"
+                      id="imagePath"
+                      formControlName="imagePath"
+                      class="form-control"
+                      class="dn"
+                      #input
+                      (change)="onfileUpload($event)"
+                      >
+                      <button
+                      type="button"
+                      (click)="triggerClick()"          
+                      class="btn btn-primary">
+                      Load the image
+                      </button>
+            
+                    </div>
+                  </div>
+              </div>
+            </div>            
+            <div class="text-center container-fluid">
+              <div class="row">
+                  <div class="col-xs-12">
+                    <img 
+                    [src]="imagePreview" 
+                    class="img-responsive h200"
+                    *ngIf="imageUploaded">
+                  </div>
+              </div>
+            </div>
+
+       
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input
+            type="text"
+            id="gender"            
+            class="form-control"
+            formControlName="gender"
+            >
+            <span 
+              *ngIf="form.get('name').invalid && form.get('name').touched "
+              class="text-danger">
+                <span *ngIf="form.get('name').errors['required']">Enter gender</span>
+                <span *ngIf="form.get('name').errors['minlength'] && form.get('name').errors['minlength']['requiredLength']">
+                  Project name length should be more than {{form.get('name').errors['minlength']['requiredLength']}} characters.
+                  Now only {{form.get('name').errors['minlength']['actualLength']}} characters.
+                </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    
+    </form>
+  </div>
+</div>
+</div>
+
+

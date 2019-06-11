@@ -1,0 +1,25 @@
+<mat-card class="example-card">
+<mat-error *ngIf="networkingErr">
+   {{ message}}
+</mat-error>
+</mat-card>
+  <div *ngIf="!networkingErr"class="col-md-12">
+    <section id="cart">
+      <div class="container-fluid p-5">  
+        
+          <h4  *ngIf="!notes" class="display-2 text-center mt-5" >Sign in  or Resend verification email</h4> 
+          <h4  *ngIf="notes" class="display-2 text-center mt-5" >{{notes}}</h4>   
+          <mat-card class="example-card">
+            <mat-error *ngIf="networkingErr">
+               {{ message}}
+            </mat-error>
+            </mat-card>
+          
+          <button class="btn btn-warning btn-block"><a (click)="confirm()">Sign in</a></button>
+          <button class="btn btn-info btn-block"><a (click)="resend()">Resend</a></button>
+      
+      </div>
+    </section>
+  </div>
+  
+  
