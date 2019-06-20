@@ -1,4 +1,10 @@
 # General
+
+$ node -v
+v8.10.0
+$ npm -v
+6.7.0
+
 Your app has two folders back and front/front, It has 2 package.json. You need to install dependencies separately
 First of all you need to install
 - node.js I used v8.10.0
