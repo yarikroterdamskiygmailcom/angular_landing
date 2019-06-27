@@ -1,0 +1,132 @@
+<!-- APP NAVBAR -->
+<nav id="app-navbar" *ngIf="!landing">
+  <div class="app-navbar-wrapper">
+    <div>
+      <a routerLink="/" class="logo">
+        <img src="assets/img/logo_white.svg" alt="">
+      </a>
+    </div>
+    <div class="app-navbar-links">
+      <a href="#">Profile</a>
+      <a href="#">Match list</a>
+      <a href="#">Tariff Plans</a>
+    </div>
+    <div class="flex jcc">
+      <a class="secondary-button-container secondary-reversed logout" href="#">Logout</a>
+      <div class="lang-dropdown-wrapper app-lang-icons lang-icons" (click)="langDrop = !langDrop">
+        <span class="bold-text text-white" translate>{{ 'langCode' | translate }}</span>
+        <div class="lang-dropdown" *ngIf="langDrop">
+          <span (click)="switchLanguage('en')">{{ 'English' | translate }}</span>
+          <span (click)="switchLanguage('es')">{{ 'Spanish' | translate }}</span>
+        </div>
+        <span class="icon ml-10">
+            <img src="assets/img/icons/arrow_down_white.svg" alt="">
+          </span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- LANDING NAVBAR -->
+<nav id="landing-menu-wrapper" *ngIf="landing">
+  <div class="container flex">
+    <div class="row">
+      <div class="nav-wrapper">
+        <a routerLink="/" class="logo">
+          <img src="assets/img/logo_landing.svg" alt="">
+        </a>
+        <div>
+          <ul class="nav-links">
+            <li><a href="#" (click)="scrollTo($event, 'landing-banner')">Home</a></li>
+            <li><a href="#" (click)="scrollTo($event, 'about-service')">About service</a></li>
+            <li><a href="#" (click)="scrollTo($event, 'our-service')">Prices</a></li>
+            <li><a href="#" (click)="scrollTo($event, 'faq-section')">FAQ</a></li>
+            <li><a href="#" (click)="scrollTo($event, 'contact-us')">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <button class="yellow-button-container yellow-button navbar-button sign-in-btn" (click)="openSignIn()">Sign
+            In
+          </button>
+          <button class="secondary-button-container secondary-button navbar-button" (click)="openSignUp()">Sign Up
+          </button>
+        </div>
+        <div class="lang-dropdown-wrapper flex space-between lang-icons" (click)="langDrop = !langDrop">
+          <span class="bold-text" translate>{{ 'langCode' | translate }}</span>
+          <div class="lang-dropdown" *ngIf="langDrop">
+            <span (click)="switchLanguage('en')">{{ 'English' | translate }}</span>
+            <span (click)="switchLanguage('es')">{{ 'Spanish' | translate }}</span>
+          </div>
+          <span class="icon ml-10">
+            <img src="assets/img/icons/arrow_down.svg" alt="">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav id="mobile-menu-wrapper" *ngIf="landing">
+  <div class="menu-wrapper">
+    <div class="mobile-menu-logo">
+      <a routerLink="/" class="logo">
+        <img src="assets/img/logo_landing.svg" alt="">
+      </a>
+    </div>
+    <div id="burger-menu-wrapper" (click)="menuIsOpen = !menuIsOpen" [ngClass]="menuIsOpen ? 'open' : ''">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </div>
+  <div class="mobile-dropdown-menu" [ngClass]="menuIsOpen ? 'dropdown-open' : ''">
+    <ul>
+      <li><a href="#" (click)="scrollTo($event, 'landing-banner', true)">Home</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'about-service', true)">About service</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'our-service', true)">Prices</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'faq-section', true)">FAQ</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'contact-us', true)">Contact us</a></li>
+      <li>
+        <div class="mobile-menu-buttons">
+          <button class="yellow-button-container yellow-button" (click)="openSignIn('50%')">Sign In</button>
+          <button class="secondary-button secondary-button-container" (click)="openSignUp('50%')">Sign Up</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav id="mobile-app-menu-wrapper" *ngIf="!landing">
+  <div class="menu-wrapper">
+    <div class="mobile-menu-logo">
+      <a routerLink="/" class="logo">
+        <img src="assets/img/logo_white.svg" alt="">
+      </a>
+    </div>
+    <div id="burger-menu-wrapper" (click)="appMenuOpen = !appMenuOpen" [ngClass]="appMenuOpen ? 'open' : ''">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <div class="mobile-app-dropdown-menu" [ngClass]="appMenuOpen ? 'dropdown-open' : ''">
+      <ul>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Match list</a></li>
+        <li><a href="#">Tariff Plans</a></li>
+        <li class="logout-in-menu"><a class="secondary-button-container secondary-reversed logout" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="sign-up-close" *ngIf="signUpOpen || signInOpen" (click)="closeSignUp()"></div>
+<div [ngClass]="signUpOpen ? '' : 'hidden'">
+  <app-signup-page></app-signup-page>
+</div>
+
+<div [ngClass]="signInOpen ? '' : 'hidden'">
+  <app-login-page></app-login-page>
+</div>
+
+<router-outlet></router-outlet>
+

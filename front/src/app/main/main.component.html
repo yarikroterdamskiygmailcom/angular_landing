@@ -1,0 +1,167 @@
+<div class="body-bg">
+  <mat-error *ngIf="networkingErr">
+    Something went wrong please try again
+  </mat-error>
+
+  <div class="tariff-plan-card-wrapper">
+    <div class="tariff-plan-card">
+      <h2>You have a free tariff plan - means analytic info below is limited</h2>
+      <div class="tariff-plan-card-button">
+        <button class="yellow-button-container yellow-button" (click)="updateTarif()">Update Tariff Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-24 w-100">
+    <div class="time-zone-block">
+      <div>
+        <p>Your date and time zone</p>
+        <h3>{{timenow | date:'EEEE MMMM d y h:mm:ss zzzz'}}</h3>
+      </div>
+      <div class="time-zone-button-wrapper">
+        <button class="secondary-button-container secondary-button" (click)="update()">Update time zone</button>
+      </div>
+    </div>
+
+    <div class="match-table-wrapper">
+      <h3 class="match-table-title">Match list</h3>
+      <div class="table-wrapper mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="maych_id">
+            <th mat-header-cell *matHeaderCellDef>maych_id</th>
+            <td mat-cell *matCellDef="let event">
+              <a routerLink="/detail/{{userid}}/{{event.match_id}}">
+                {{event.match_id}}
+              </a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef>Time</th>
+            <td mat-cell *matCellDef="let event">
+              <a routerLink="/detail/{{userid}}/{{event.match_id}}">
+                {{event.event_play_time | FilterPipe | date:'hh:mm'}}
+              </a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef>Country</th>
+            <td mat-cell *matCellDef="let event">
+              <a routerLink="/detail/{{userid}}/{{event.match_id}}">
+                {{event.country}}
+              </a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="leaque">
+            <th mat-header-cell *matHeaderCellDef>Leaque</th>
+            <td mat-cell *matCellDef="let event">
+              <a routerLink="/detail/{{userid}}/{{event.match_id}}">
+                {{event.competition}}
+              </a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="match">
+            <th mat-header-cell *matHeaderCellDef>Match</th>
+            <td mat-cell *matCellDef="let event">
+              <a routerLink="/detail/{{userid}}/{{event.match_id}}">
+                {{event.players}}
+              </a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="1">
+            <th mat-header-cell *matHeaderCellDef>1</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.home_draw_away.home * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="x">
+            <th mat-header-cell *matHeaderCellDef>x</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.home_draw_away.draw * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="2">
+            <th mat-header-cell *matHeaderCellDef>2</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.home_draw_away.away * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="over 0.5 HT">
+            <th mat-header-cell *matHeaderCellDef>Over 0.5 HT</th>
+
+            <td mat-cell *matCellDef="let event">
+              <p *ngIf="event.probabilities.first_half">
+                {{(event.probabilities.first_half.over_under['0.50'].over * 100).toFixed(2)}}%
+              </p>
+
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="over 0.5 SH">
+            <th mat-header-cell *matHeaderCellDef>Over 0.5 SH</th>
+            <td mat-cell *matCellDef="let event">
+              <p *ngIf="event.probabilities.first_half">
+                {{(event.probabilities.second_half.over_under['0.50'].over * 100).toFixed(2)}}%
+              </p>
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="over 1.5">
+            <th mat-header-cell *matHeaderCellDef>Over 1.5</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.over_under['1.50'].over * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="over 2.5">
+            <th mat-header-cell *matHeaderCellDef>Over 2.5</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.over_under['2.50'].over * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="under 3.5">
+            <th mat-header-cell *matHeaderCellDef>Under 3.5</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.over_under['3.50'].under * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="under 4.5">
+            <th mat-header-cell *matHeaderCellDef>Under 4.5</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.over_under['4.50'].under * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="btts yes">
+            <th mat-header-cell *matHeaderCellDef>btts yes</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.btts.yes * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="btts no">
+            <th mat-header-cell *matHeaderCellDef>btts no</th>
+            <td mat-cell *matCellDef="let event">
+              {{(event.probabilities.full_time.btts.no * 100).toFixed(2)}}%
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+    <mat-card *ngIf="!events.length === 0">Nothing to display</mat-card>
+  </div>
+</div>

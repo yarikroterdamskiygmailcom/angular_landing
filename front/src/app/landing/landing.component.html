@@ -1,0 +1,215 @@
+<div>
+  <section id="landing-banner" class="landing-banner">
+    <h1>Lorem ipsum dolor sit amet, nec quidam eripuit</h1>
+    <a class="yellow-button landing-banner-button" href="#" (click)="openModal($event)">get started now</a>
+  </section>
+  <section id="about-service">
+    <div class="text-center">
+      <h3 class="landing-pre-headers bottom-line-left">About Service</h3>
+    </div>
+    <div class="container">
+      <div class="row about-service-content">
+        <div class="about-service-block">
+          <div class="service-content-image">
+            <img src="assets/img/landing/people.svg" alt="people">
+          </div>
+          <p class="about-content-title">1000 Users</p>
+          <div class="about-service-content-item">
+            <div>
+              <p>Lorem ipsum dolor sit amet, nec quidam eripuit mediocrem id, maiestatis percipitur mel at</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-service-block">
+          <div class="service-content-image">
+            <img src="assets/img/landing/clock.svg" alt="clock">
+          </div>
+          <p class="about-content-title">Quick update information</p>
+          <div class="about-service-content-item">
+            <div>
+              <p>Lorem ipsum dolor sit amet, nec quidam eripuit mediocrem id, maiestatis percipitur mel at</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-service-block">
+          <div class="service-content-image">
+            <img src="assets/img/landing/balls.svg" alt="balls">
+          </div>
+          <div>
+            <p class="about-content-title">Data from 30 football leagues</p>
+          </div>
+          <div class="about-service-content-item">
+            <div>
+              <p>Lorem ipsum dolor sit amet, nec quidam eripuit mediocrem id, maiestatis percipitur mel at</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-service-block">
+          <div class="service-content-image">
+            <img src="assets/img/landing/tickets.svg" alt="tickets">
+          </div>
+          <p class="about-content-title">Lorem ipsum dolor sit amet</p>
+          <div class="about-service-content-item">
+            <div>
+              <p>Lorem ipsum dolor sit amet, nec quidam eripuit mediocrem id, maiestatis percipitur mel at</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="our-service">
+    <div class="text-center">
+      <h3 class="landing-pre-headers bottom-line-right">Our Prices</h3>
+    </div>
+    <div>
+      <div class="container">
+        <div class="row price-cards-wrapper">
+          <div *ngFor="let plan of plansContent" class="price-card">
+            <div class="price-card-header">
+              <p>{{ plan.duration }}</p>
+            </div>
+            <div class="price-card-content">
+              <div class="price-card-price">
+                <p>
+                  <span class="card-price-currency">€</span>
+                  <span class="card-price-value">{{ plan.price }}</span>
+                  <span class="card-price-duration">/{{ plan.durationShort }}</span>
+                </p>
+              </div>
+              <div class="price-card-advantage">
+                <ul>
+                  <li *ngFor="let advantage of plan.advantage">
+                    <span>{{ advantage }}</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="price-card-button">
+                <a class="yellow-button yellow-button-container plan-button" href="#" (click)="openModal($event)">Select Plan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="faq-section">
+    <div class="text-center">
+      <h3 class="landing-pre-headers bottom-line-left">FAQ</h3>
+    </div>
+    <div class="container">
+      <div class="row jcs">
+        <div class="cards-section-wrapper">
+          <div class="faq-cards">
+            <div class="faq-card" *ngFor="let card of faqContent">
+              <div class="faq-card-header" (click)="card.isOpen = !card.isOpen">
+                <span>{{ card.title }}</span>
+                <span class="faq-card-icon">
+                  <img src="assets/img/icons/arrow_down.svg" [ngClass]="card.isOpen ? 'rotate' : ''" alt="">
+                </span>
+              </div>
+              <div class="faq-divider" *ngIf="card.isOpen"></div>
+              <div class="faq-card-body" *ngIf="card.isOpen">
+                {{ card.content }}
+              </div>
+            </div>
+            <div class="text-right faq-view-all">
+              <a href="#">View all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="get-started-now">
+    <div class="text-center">
+      <div class="container">
+        <div class="row jcs fix-center">
+          <div class="get-started-wrapper">
+            <h3>Lorem ipsum dolor sit amet, nec quidam eripuit mediocrem id, maiestatis percipitur mel at, cu tibique
+              omittam est.</h3>
+            <div class="get-started-button">
+              <a class="yellow-button yellow-button-container" href="#" (click)="openModal($event)">Get started now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact-us">
+    <div class="contact-us-wrapper">
+      <div class="contact-us-img"></div>
+      <div class="contact-us-form-wrapper">
+        <div class="contact-us-form">
+          <div class="text-center">
+            <h3 class="landing-pre-headers bottom-line-right">Contact us</h3>
+          </div>
+          <div class="container">
+            <div class="row jcs">
+              <form action="#" [formGroup]="contactUs">
+                <div class="contact-us-content">
+                  <div class="contact-us-fg">
+                    <label for="name">Enter your Name*</label>
+                    <input id="name" type="text" class="general-input" formControlName="name">
+                  </div>
+                  <div class="contact-us-fg">
+                    <label for="email">Enter your Email*</label>
+                    <input id="email" type="text" class="general-input" formControlName="email">
+                  </div>
+                  <div class="contact-us-fg">
+                    <label for="message">Enter your Message*</label>
+                    <textarea id="message" class="general-input" rows="6" formControlName="message"></textarea>
+                  </div>
+                  <div class="contact-us-fg contact-us-fg-btn">
+                    <button class="yellow-button" [disabled]="contactUs.invalid">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container flex">
+      <div class="row">
+        <div class="nav-wrapper">
+          <div class="footer-logo-wrapper">
+            <a routerLink="/" class="logo">
+              <img src="assets/img/logo_white.svg" alt="">
+            </a>
+          </div>
+          <div class="links-wrapper">
+            <ul class="nav-links">
+              <li><a href="#" (click)="scrollTo($event, 'landing-banner')">Home</a></li>
+              <li><a href="#" (click)="scrollTo($event, 'about-service')">About service</a></li>
+              <li><a href="#" (click)="scrollTo($event, 'our-service')">Prices</a></li>
+              <li><a href="#" (click)="scrollTo($event, 'faq-section')">FAQ</a></li>
+              <li><a href="#" (click)="scrollTo($event, 'contact-us')">Contact us</a></li>
+            </ul>
+          </div>
+          <div class="social-icons">
+            <div class="icon"><a href="#"><i class="fab fa-youtube"></i></a></div>
+            <div class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+            <div class="icon"><a href="#"><i class="fab fa-twitter"></i></a></div>
+          </div>
+          <div class="flex space-between lang-icons">
+            <span class="bold-text">Eng</span>
+            <span class="icon ml-10">
+              <img src="assets/img/icons/arrow_down_white.svg" alt="">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <p class="footer-copyright">
+          <span class="small-icon"><img src="assets/img/icons/copyright.svg" alt=""></span>
+          <span>BetSoccer {{ now | date:'y' }}</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,29 @@
+.container {
+  display: inline-block;
+}
+.container .term {
+   margin-right: 20px;
+}
+.results-table {
+ width: 100%;
+}
+
+
+
+.central {
+  text-align: center;
+}
+.green {
+  background-color:rgb(151, 214, 151);
+}
+.greenText {
+  color:rgb(22, 107, 22);
+}
+.violet {
+  background-color:rgb(233, 170, 230);
+}
+.orange {
+  background-color:rgb(238, 114, 31);
+}
+
+

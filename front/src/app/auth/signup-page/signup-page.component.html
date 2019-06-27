@@ -1,0 +1,65 @@
+<div class="auth-card" id="sign-up-card">
+  <div class="close-auth-card" (click)="closeSignUp()">
+    <i class="fas fa-times"></i>
+  </div>
+  <h1 class="">Please, Sign up.</h1>
+  <p class="sign-up-error" *ngIf="networkingErr">
+    This email is already existed. Sign in or try other email.
+  </p>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Enter your Email</label>
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        name="password"
+        class="general-input">
+      <span *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">
+            <span *ngIf="form.get('email').errors['required']">Enter email</span>
+            <span *ngIf="form.get('email').errors['email']">Enter correct email</span>
+            </span>
+    </div>
+    <div class="form-group">
+      <label for="password">Enter your Password</label>
+      <input
+        formControlName="password"
+        type="password" id="password"
+        name="password"
+        class="general-input">
+      <span *ngIf="form.get('password').invalid && form.get('password').touched" class="text-danger">
+                  <span *ngIf="form.get('password').errors['required']">Enter password</span>
+                  <span
+                    *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+                    Password length should be more than {{form.get('password').errors['minlength']['requiredLength']}}
+                    characters.
+                    Now only {{form.get('password').errors['minlength']['actualLength']}} characters.
+                  </span>
+             </span>
+    </div>
+    <div class="form-group-checkbox mt-25">
+      <a class="terms-and-conditions" href="#">Terms and Conditions</a>
+      <label class="label-container" for="defaultUnchecked">
+        I am already 18 years old
+        <input type="checkbox" class="custom-control-input" id="defaultUnchecked" formControlName="limits">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="form-group-checkbox">
+      <label class="label-container" for="privacyCheckbox">
+        <a href="#">I agree to the privacy policy</a>
+        <input type="checkbox" class="custom-control-input" id="privacyCheckbox" formControlName="privacy">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="have-account">
+      <span>
+        Already have an account?
+        <a href="#"><b>Sign In</b></a>
+      </span>
+    </div>
+    <div>
+      <button [disabled]="form.invalid" class="yellow-button yellow-button-container sign-up-button" type="submit">Sign up</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,432 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*body::-webkit-scrollbar {*/
+/*  width: 0;*/
+/*}*/
+
+/*body::-webkit-scrollbar-track {*/
+/*  width: 0;*/
+/*}*/
+
+/*body::-webkit-scrollbar-thumb {*/
+/*  width: 0;*/
+/*}*/
+
+.body-bg{
+  min-height: 100vh;
+  min-width: 100%;
+  background: #FDFDFF;
+}
+
+* {
+  font-family: 'Open Sans';
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.main-dark {
+  background: #35236D;
+}
+
+.color-dark {
+  color: #35236D;
+}
+
+.main-second {
+  background: #FFD01C;
+}
+
+.color-second {
+  color: #FFD01C;
+}
+
+.icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+.icon > img {
+  width: 100%;
+  height: 100%;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.bold-text {
+  color: #35236D;
+  font-weight: bold;
+  line-height: 19px;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 1140px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.mw-100 {
+  max-width: 100%;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.general-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 12px;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  transition: .25s;
+}
+
+.general-input:hover {
+  border: 1px solid #333333;
+}
+
+.general-input:focus {
+  border: 1px solid #7F60DE;
+}
+
+.general-input.ng-touched.ng-invalid {
+  border: 1px solid #F40D1D !important;
+}
+
+
+.yellow-button {
+  cursor: pointer;
+  transition: .1s;
+}
+
+.yellow-button:hover {
+  background: #FFC700;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.23);
+}
+
+.yellow-button:active {
+  background: #FFC700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.yellow-button:disabled,
+.yellow-button[disabled] {
+  background: #FFFFFF !important;
+  border: 1px solid #E0E0E0 !important;
+  color: #BCBCBC !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+}
+
+.secondary-button {
+  cursor: pointer;
+  transition: .1s;
+}
+
+.secondary-button:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.23);
+}
+
+.secondary-button:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-button:disabled,
+.secondary-button[disabled] {
+  border: 2px solid #E0E0E0 !important;
+  color: #BCBCBC !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+}
+
+.small-icon {
+  display: inline-block;
+}
+
+.small-icon > img {
+  width: 15px;
+  height: 15px;
+}
+
+textarea {
+  resize: none;
+}
+
+.auth-card {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  max-width: 545px;
+  width: 100%;
+  background: #FCFCFC;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 5px;
+  padding: 50px 70px 60px 70px;
+  z-index: 1600;
+}
+
+.auth-card > h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 31px;
+  text-align: center;
+  color: #444444;
+}
+
+.form-group:first-child {
+  margin-top: 0;
+}
+
+.form-group > label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #444444;
+  margin-left: 5px;
+}
+
+.form-group > .general-input {
+  margin-top: 11px;
+}
+
+.yellow-button-container {
+  background: #FFCA00;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #35236D;
+  padding: 11px 0;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #FFCA00;
+  min-height: 44px;
+}
+
+.secondary-button-container {
+  background: #FFFFFF;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #35236D;
+  padding: 11px 0;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #35236D;
+}
+
+.label-container {
+  display: block;
+  position: relative;
+  padding-left: 36px;
+  padding-top: 3px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #444444;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.label-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 21px;
+  width: 21px;
+  border: 1px solid #BAB9B9;
+  border-radius: 2px;
+  background: #FFFFFF;
+}
+
+/* On mouse-over, add a grey background color */
+.label-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.label-container input:checked ~ .checkmark {
+  background-color: #FFFFFF;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.label-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.label-container .checkmark:after {
+  left: 8px;
+  top: -6px;
+  width: 8px;
+  height: 20px;
+  border: solid #444444;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.mt-25 {
+  margin-top: 25px !important;
+}
+
+.sign-up-popup {
+  position: fixed;
+  width: 100%;
+}
+
+.sign-up-close {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, .5);
+  z-index: 1500;
+}
+
+.hidden {
+  display: none;
+}
+
+.close-auth-card {
+  display: none;
+}
+
+@media screen and (max-width: 560px) {
+  .auth-card,
+  .forgot-password-container {
+    position: fixed;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100%;
+    border-radius: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding: 50px 70px;
+  }
+
+  .close-auth-card {
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .close-auth-card > svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}

@@ -1,0 +1,80 @@
+.form-group > label{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #444444;
+  display: block;
+  margin: 23px 0 10px 0;
+}
+
+.form-group > input{
+  margin: 0;
+}
+
+.sign-up-error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  margin-top: 7px;
+  color: #7A7A7A;
+}
+
+.form-group-checkbox{
+  position: relative;
+  min-height: 20px;
+  margin-top: 20px;
+}
+
+.form-group-checkbox a {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #1374CD;
+}
+
+.have-account {
+  margin-top: 18px;
+  padding-left: 2px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #444444;
+}
+
+.have-account a {
+  padding-left: 8px;
+  text-decoration: none;
+  color: #444444 !important;
+}
+
+.sign-up-button {
+  margin-top: 39px;
+}
+
+.terms-and-conditions{
+  float: right;
+  padding: 3px 3px;
+  position: relative;
+  z-index: 1000;
+}
+
+@media screen and (max-width: 550px) {
+  .terms-and-conditions{
+    float: unset;
+    position: relative;
+    z-index: 1000;
+    padding-bottom: 30px;
+    text-align: center;
+    display: block;
+  }
+
+  .have-account{
+    margin-top: 20px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,61 @@
+<mat-error *ngIf="networkingErr">
+  Something went wrong please try again
+</mat-error>
+
+<div class="container-fluid p-5">  
+  <div  *ngIf="notes">
+    <h2  class="display-2 text-center mt-5" >{{notes}}</h2>  
+  </div>
+</div>
+
+<div class="col-md-12">
+  <section id="cart">
+    <div class="container-fluid p-5">  
+      
+        <h3  class="display-2 text-center mt-5" ><a (click)="toAnalytics()"> GO TO ANALYTICS PAGE</a></h3>   
+        
+        <button class="btn btn-warning btn-block"><a (click)="toAnalytics()"> GO TO ANALYTICS</a></button>
+    
+    </div>
+  </section>
+</div>
+<mat-card class="example-card">
+  <h3>{{timenow}}</h3>
+  <mat-card-header>
+      
+      
+    <img  *ngIf="profile.imageSrc!==''" mat-card-avatar class="example-header-image" [src]="'http://localhost:4000/' + profile.imageSrc">
+    <mat-card-subtitle> Your name: <h4>{{profile.userName}}</h4></mat-card-subtitle>
+    <mat-card-subtitle>Your Time Zone:  
+      <h4>{{profile.timeZone}} 
+        <button  mat-raised-button color="accent" (click)="update()">UPDATE Time Zone </button> 
+      </h4>      
+    </mat-card-subtitle>
+    
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p>
+      Date of birth:  {{profile.birthDate | date}}
+    </p>
+    <p>
+      Gender:  {{profile.gender}}
+    </p>
+  </mat-card-content>
+  <mat-card-content>
+    <h1>
+      Your tariff plan: {{tariffPlan.name}}
+      <button  mat-raised-button color="accent" (click)="ontariff()">UPDATE Tariff</button> 
+    </h1>
+    <h3>
+      Descriptions: {{tariffPlan.description}}
+    </h3>
+    <h4>Benefits</h4>
+    <p *ngFor="let benefit of tariffPlan.benefits">
+      {{benefit}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button  mat-raised-button color="accent" (click)="update()">UPDATE Profile</button>    
+  </mat-card-actions>
+</mat-card>
