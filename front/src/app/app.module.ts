@@ -25,9 +25,12 @@ import { EmailVerificationComponent } from './auth/email-verification/email-veri
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { MatchInfoComponent } from './main/match-info/match-info.component';
 import { FilterPipe } from './shared/datepipe';
+import { ucFirst } from './shared/ucfirst';
 import { LandingComponent } from './landing/landing.component';
 import {SignUpService} from './shared/sign-up.service';
 import {MatPaginatorModule} from '@angular/material';
+import { FooterComponent } from './footer/footer.component';
+import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -49,7 +52,10 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     ChangePasswordComponent,
     MatchInfoComponent,
     FilterPipe,
-    LandingComponent
+    ucFirst,
+    LandingComponent,
+    FooterComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,7 @@ pass 10latapu
 for stripe you can use test card number 4242 4242 4242 4242
 
 7. Also, add tariff plans to the base you can do it wia posment
-http://localhost:4000/matches/tariff/create
+http://API_URL/matches/tariff/create
 
 8.  npm run dev
 

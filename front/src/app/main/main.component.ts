@@ -7,6 +7,7 @@ import {MainService} from '../shared/main.service';
 import {TariffService} from '../shared/tariff.service';
 import {FilterPipe} from '../shared/datepipe';
 import {MatTableDataSource, MatPaginator} from '@angular/material';
+import {SignUpService} from "../shared/sign-up.service";
 //
 interface PeriodicElement {
   name: string;
@@ -28,7 +29,8 @@ export class MainComponent implements OnInit, OnDestroy {
     private mainService: MainService,
     private tariffService: TariffService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private signUpService: SignUpService) {
   }
 
   private subscription: Subscription;
@@ -43,6 +45,7 @@ export class MainComponent implements OnInit, OnDestroy {
   profile = {};
   tariffPlanName = 'Free';
   timeZone = '';
+  spinner = true;
 
   // @ts-ignore
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -53,6 +56,7 @@ export class MainComponent implements OnInit, OnDestroy {
         (params: Params) => {
           this.userid = params.id;
           this.fetch(this.userid);
+          this.signUpService.setEvent({userId: this.userid});
           // this.getMatches("2019-05-19")
         }
       );
@@ -114,6 +118,7 @@ export class MainComponent implements OnInit, OnDestroy {
           this.dataSource.paginator = this.paginator;
           console.log(this.dataSource);
           console.log('limited2', this.events);
+          this.spinner = false;
         },
         err => {
           this.networkingErr = true;

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../shared/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProfileServiceService} from '../shared/profile-service.service';
 import {TranslateService} from '@ngx-translate/core';
 import {SignUpService} from '../shared/sign-up.service';
@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   signUpOpen = false;
   signInOpen = false;
   langDrop = false;
+  emailSend = false;
+  userId;
 
   constructor(private authService: AuthService,
               private profileService: ProfileServiceService,
@@ -34,19 +36,30 @@ export class HeaderComponent implements OnInit {
     });
 
     this.signUpService.getEvent().subscribe((res) => {
-      this.signUpOpen = res.signUp;
-      this.signInOpen = res.signIn;
-      document.getElementById('sign-up-card').style.top = res.top;
-      document.getElementById('sign-in-card').style.top = res.top;
+      if (res.userId) {
+        this.userId = res.userId;
+      }
+      if (res.signIn !== undefined || res.signUp !== undefined || res.emailSend !== undefined) {
+        this.signUpOpen = res.signUp;
+        this.signInOpen = res.signIn;
+        this.emailSend = res.emailSend;
+        if (document.getElementById('sign-up-card')) {
+          document.getElementById('sign-up-card').style.top = res.top;
+        }
+        if (document.getElementById('sign-in-card')) {
+          document.getElementById('sign-in-card').style.top = res.top;
+        }
+
+      }
     });
   }
 
-  openSignUp(topPosition = '250px') {
+  openSignUp(topPosition = '450px') {
     this.signUpService.setEvent({signUp: true, signIn: false, top: topPosition});
     document.getElementById('sign-up-card').style.top = topPosition;
   }
 
-  openSignIn(topPosition = '250px') {
+  openSignIn(topPosition = '450px') {
     this.signUpService.setEvent({signUp: false, signIn: true, top: topPosition});
     document.getElementById('sign-in-card').style.top = topPosition;
   }
@@ -55,9 +68,14 @@ export class HeaderComponent implements OnInit {
     this.signUpService.setEvent({signUp: false, signIn: false, top: 0});
   }
 
-  onLogout() {
+  openApp() {
+    this.router.navigate(['main/' + this.userId]);
+  }
+
+  onLogout(e) {
+    e.preventDefault();
     this.authService.logOut();
-    this.router.navigate(['/login/']);
+    this.router.navigate(['/']);
   }
 
   switchLanguage(language: string) {

@@ -89,8 +89,14 @@
 
   <p class="back-to-sign-in">
     <img src="assets/img/icons/arrow_left.svg" alt="">
-    <span>Back to Sign in form</span>
+    <span (click)="passforgot = false">Back to Sign in form</span>
   </p>
 </div>
 
-
+<app-confirmation
+  [email]="email"
+  [secondMessage]="secondMessage"
+  [action]="action"
+  [visible]="visible"
+  (modalClose)="closeModal()"
+></app-confirmation>

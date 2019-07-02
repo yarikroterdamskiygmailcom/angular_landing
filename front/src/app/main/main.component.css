@@ -135,8 +135,8 @@ th.mat-header-cell {
   border-right: 1px solid #F1F1F1;
 }
 
-.mat-cell{
-  padding: 21px 36px 20px 9px !important;
+.mat-cell {
+  padding: 22px 36px 20px 9px !important;
   border-right: 1px solid #F1F1F1;
   font-style: normal;
   font-weight: normal;
@@ -151,7 +151,7 @@ th.mat-header-cell {
   color: #444444;
 }
 
-.mat-cell > a{
+.mat-cell > a {
   color: #1374CD !important;
   text-decoration: none;
 }
@@ -162,17 +162,34 @@ th.mat-header-cell {
   font-size: 14px;
 }
 
-tr.mat-row{
+tr.mat-row {
   height: 55px;
 }
 
-.table-wrapper{
+.table-wrapper {
   border-radius: 5px;
   margin-top: 4px;
   border: 1px solid #F1F1F1;
   box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
   margin-bottom: 20px;
   overflow-x: auto;
+}
+
+.spinner-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.spinner-wrapper > mat-spinner{
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.spinner-wrapper > mat-spinner > svg{
+  width: 20px !important;
+  height: 20px !important;
 }
 
 .mat-row:nth-child(2n) {
@@ -185,4 +202,62 @@ td.mat-cell {
 
 th.mat-header-cell {
   border-bottom: 1px solid #F1F1F1;
+}
+
+.mat-paginator-page-size-label,
+/deep/ .mat-select-value-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #5F6366;
+}
+
+/deep/ .mat-form-field-underline {
+  display: none !important;
+}
+
+
+@media screen and (max-width: 680px) {
+  .tariff-plan-card-wrapper {
+    padding: 70px 24px 43px 24px;
+  }
+
+  .time-zone-block {
+    justify-content: center;
+    flex-wrap: wrap;
+    height: unset;
+  }
+
+  .time-zone-button-wrapper {
+    width: 100%;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 20px 0 0 0;
+  }
+
+  .time-zone-block > div:first-child {
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .time-zone-block > div:first-child > p {
+    margin-bottom: 10px;
+  }
+
+  /deep/.mat-paginator-container {
+    justify-content: space-between;
+    flex-flow: row nowrap !important;
+    padding: 0;
+  }
+
+  /deep/.mat-paginator-range-label{
+    margin: 0 12px !important;
+  }
+
+  /deep/.mat-paginator-outer-container{
+    margin-bottom: 20px;
+  }
 }

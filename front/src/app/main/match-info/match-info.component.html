@@ -1,431 +1,670 @@
-<mat-error *ngIf="networkingErr">
-    Something went wrong please try again
-</mat-error>
+<div class="body-bg">
+  <div class="page-title">
+    <h1>Match INFO PAGE</h1>
+  </div>
+  <div class="match-info-container">
+    <mat-error *ngIf="networkingErr">
+      Something went wrong please try again
+    </mat-error>
 
-<mat-card class="example-card">
-    <h3>{{timenow}}</h3>
-    <mat-card-actions>
-        <button  mat-raised-button color="accent" (click)="update()"> Check and Update your TIME ZONE</button>
-    </mat-card-actions>
-    <h2> For users with free tariff plan analytics info is limited</h2>
+    <div class="info-cards-wrapper tablet-no-wrap">
+      <div class="match-info-card">
+        <div class="card-info">
+          <p class="card-title">Your current tariff plan</p>
+          <p class="card-plan">Free Plan</p>
+          <p class="card-plan-footer">Analytic info below is limited</p>
+        </div>
+        <div class="card-plan-button-wrapper">
+          <button class="yellow-button-container yellow-button tariff-plan-button" (click)="updateTarif()">Update Tariff
+            Plan
+          </button>
+        </div>
+      </div>
 
-    <mat-card-actions>
-
-        <button  mat-raised-button color="accent" (click)="updateTarif()"> Check AND Update your TARIFF PLAN</button>
-    </mat-card-actions>
-</mat-card>
-
-
-
-
-
-<mat-card>
-  <table class="table">
-        <thead>
-          <tr class ="green">
-            <th scope="col">Contry</th>
-            <th scope="col">League</th>
-            <th scope="col">Match</th>
-            <th scope="col">Play time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="orange">
-            <th scope="row">{{matchInfo.data.match_data.country}}</th>
-            <td>{{matchInfo.data.match_data.competition}}</td>
-            <td>{{matchInfo.data.match_data.players}}</td>
-            <td>{{matchTime}}</td>
-          </tr>
-        </tbody>
-      </table>
-
-</mat-card>
-<hr>
-<mat-card>
- <table class="table">
-  <thead>
-    <tr class ="green">
-      <th class ="central" colspan="8">Full time probabilities</th>
-    </tr>
-  </thead>
- </table>
-</mat-card>
-
-  <mat-card>
-    <table class="table">
-     <thead>
-      <tr >
-        <th class ="greenText" colspan="3"> 1X2 Current Season</th>
-        <td class ="greenText" colspan="3">1X2 Long Term</td>
-      </tr>
-     </thead>
-      <tbody>
-      <tr>
-        <th>1</th>
-        <td>{{(matchInfo.data.probabilities.current_season.full_time.home_draw_away.home*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.current_season.full_time.home_draw_away.home).toFixed(2)}}</td>
-        <td>1</td>
-        <td>{{(matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.home*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.home).toFixed(2)}}</td>
-      </tr>
-      <tr>
-        <th>x</th>
-        <td>{{(matchInfo.data.probabilities.current_season.full_time.home_draw_away.draw*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.current_season.full_time.home_draw_away.draw).toFixed(2)}}</td>
-        <td>x</td>
-        <td>{{(matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.draw*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.draw).toFixed(2)}}</td>
-      </tr>
-      <tr>
-        <th>2</th>
-        <td>{{(matchInfo.data.probabilities.current_season.full_time.home_draw_away.away*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.current_season.full_time.home_draw_away.away).toFixed(2)}}</td>
-        <td>2</td>
-        <td>{{(matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.away*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.away).toFixed(2)}}</td>
-      </tr>
-    </tbody>
-  </table>
-</mat-card>
-
-<mat-card>
-  <table class="table">
-    <thead>
-      <tr class ="greenText">
-        <th colspan="3">DC Current Season</th>
-        <td colspan="3">DC Long Term</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1x</th>
-        <td>{{(matchInfo.data.probabilities.current_season.full_time.double_chance["1X"]*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.current_season.full_time.double_chance["1X"]).toFixed(2)}}</td>
-        <td>1x</td>
-        <td>{{(matchInfo.data.probabilities.all_seasons.full_time.double_chance["1X"]*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.all_seasons.full_time.double_chance["1X"]).toFixed(2)}}</td>
-      </tr>
-      <tr>
-        <th scope="row" >12</th>
-        <td>{{(matchInfo.data.probabilities.current_season.full_time.double_chance["12"]*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.current_season.full_time.double_chance["12"]).toFixed(2)}}</td>
-        <td>12</td>
-        <td>{{(matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"]*100).toFixed(2)}}%</td>
-        <td>{{(1/matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"]).toFixed(2)}}</td>
-      </tr>
-      <tr>
-          <th scope="row" >x2</th>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.double_chance["X2"]*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.double_chance["X2"]).toFixed(2)}}</td>
-          <td>x2</td>
-          <td>{{(matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"]*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"]).toFixed(2)}}</td>
-        </tr>
-    </tbody>
-  </table>
-</mat-card>
-
-<mat-card>
-    <table class="table">
-      <thead>
-        <tr class ="green">
-          <th class ="central" scope="row" colspan="6">Over/Under (O/U)</th>
-
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">+0.5</th>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].over*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].over).toFixed(2)}}</td>
-          <td>-0.5</td>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].under*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].under).toFixed(2)}}</td>
-        </tr>
-        <tr>
-          <th scope="row">+1.5</th>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].over*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].over).toFixed(2)}}</td>
-          <td>-1.5</td>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].under*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].under).toFixed(2)}}</td>
-        </tr>
-        <tr>
-        <th scope="row">+2.5</th>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].over*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].over).toFixed(2)}}</td>
-          <td>-2.5</td>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].under*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].under).toFixed(2)}}</td>
-          </tr>
-          <tr>
-        <th scope="row">+3.5</th>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].over*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].over).toFixed(2)}}</td>
-          <td>-3.5</td>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].under*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].under).toFixed(2)}}</td>
-        </tr>
-        <tr>
-          <th scope="row">+4.5</th>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["4.50"].over*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["4.50"].over).toFixed(2)}}</td>
-          <td>-4.5</td>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["4.50"].under*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].under).toFixed(2)}}</td>
-        </tr>
-        <tr>
-          <th scope="row">+5.5</th>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].over*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].over).toFixed(2)}}</td>
-          <td>-5.5</td>
-          <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].under*100).toFixed(2)}}%</td>
-          <td>{{(1/matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].under).toFixed(2)}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </mat-card>
-
-  <mat-card>
-      <table class="table">
-        <thead>
-          <tr class ="green">
-            <th class ="central" scope="row" colspan="6">BTTS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Yes</th>
-            <td>{{(matchInfo.data.probabilities.current_season.full_time.btts.yes*100).toFixed(2)}}%</td>
-            <td>{{(1/matchInfo.data.probabilities.current_season.full_time.btts.yes).toFixed(2)}}</td>
-            <td>No</td>
-            <td>{{(matchInfo.data.probabilities.current_season.full_time.btts.no*100).toFixed(2)}}%</td>
-            <td>{{(1/matchInfo.data.probabilities.current_season.full_time.btts.no).toFixed(2)}}</td>
-          </tr>
-        </tbody>
-      </table>
-  </mat-card>
-    <hr>
-  <mat-card>
-  <table class="table">
-    <thead>
-      <tr>
-        <th class ="central green" colspan="8">Full time stats data</th>
-      </tr>
-    </thead>
-      <tbody>
-        <tr>
-          <th class ="central violet" colspan="6">Team result last five matches</th>
-
-        </tr>
-        <tr>
-          <th class="green">{{firstPlayer}}</th>
-          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['1']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['2']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['3']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['4']}}</td>
-
-        </tr>
-        <tr>
-          <th class="green">{{secondPlayer}}</th>
-          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['1']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['2']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['3']}}</td>
-          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['4']}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </mat-card>
-
-<mat-card>
-  <table class="table">
-    <thead>
-      <tr class="violet">
-        <th colspan="3">season results</th>
-        <td  scope="col" colspan="3">season average goals</td>
-      </tr>
-      <tr>
-          <th colspan="1"></th>
-          <th  scope="col">won</th>
-          <td  scope="col" >draw</td>
-          <td  scope="col" >lost</td>
-          <td  scope="col">scored</td>
-          <td  scope="col" >conceded</td>
-        </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th class="green" scope="row">{{firstPlayer}}</th>
-        <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.won}}</td>
-        <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.draw}}</td>
-        <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.lost}}</td>
-        <td>{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_scored).toFixed(2)}}</td>
-        <td>{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_conceded).toFixed(2)}}</td>
-      </tr>
-      <tr>
-        <th class="green" scope="row">{{secondPlayer}}</th>
-        <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.won}}</td>
-        <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.draw}}</td>
-        <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.lost}}</td>
-        <td>{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_scored).toFixed(2)}}</td>
-        <td>{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_conceded).toFixed(2)}}</td>
-      </tr>
-    </tbody>
-  </table>
-</mat-card>
-
-<mat-card>
-<table class="table">
-  <thead>
-    <tr>
-      <th class ="central violet" scope="row" colspan="7">Over/Under last five matches form</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="violet" scope="row">0.5</th>
-      <td class="green">{{firstPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row"></th>
-      <td class="green">{{secondPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet"scope="row">1.5</th>
-      <td class="green">{{firstPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row"></th>
-      <td class="green">{{secondPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['4']}}</td>
-      </tr>
-    <tr>
-      <th class="violet" scope="row">2.5</th>
-      <td class="green">{{firstPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row"></th>
-      <td class="green">{{secondPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row">3.5</th>
-      <td class="green">{{firstPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row"></th>
-      <td class="green">{{secondPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row">4.5</th>
-      <td class="green">{{firstPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row"></th>
-      <td class="green">{{secondPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['4']}}</td>
-      </tr>
-    <tr>
-      <th class="violet" scope="row">5.5</th>
-      <td class="green">{{firstPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['4']}}</td>
-    </tr>
-    <tr>
-      <th class="violet" scope="row"></th>
-      <td class="green">{{secondPlayer}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['0']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['1']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['2']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['3']}}</td>
-      <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['4']}}</td>
-    </tr>
-  </tbody>
-</table>
-</mat-card>
-
-<mat-card>
-  <table class="table">
-    <thead>
-      <tr>
-        <th class ="central violet" scope="row" colspan="4">Suggested Correct Scores</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.home}} - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.away}}</th>
-        <td>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.home}} - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.away}}</td>
-      </tr>
-      <tr>
-        <th>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.home}} - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.away}}</th>
-        <td>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.home}} - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.away}}</td>
-      </tr>
-    </tbody>
-  </table>
-</mat-card>
+      <div class="match-info-card">
+        <div class="card-info">
+          <p class="card-title">Your date and time zone</p>
+          <p class="card-plan">{{timenow}}</p>
+        </div>
+        <div class="yellow-button-outline-wrapper card-plan-button-wrapper">
+          <button class="tariff-plan-button secondary-button-container secondary-button" (click)="update()">Update Time
+            Zone
+          </button>
+        </div>
+      </div>
+    </div>
 
 
+    <div class="match-main-info-block">
+      <div class="country-section">
+        <p class="info-block-title">Country</p>
+        <p>{{matchInfo.data.match_data.country}}</p>
+      </div>
+      <div class="league-section">
+        <p class="info-block-title">League</p>
+        <p>{{matchInfo.data.match_data.competition}}</p>
+      </div>
+      <div class="match-section">
+        <p class="info-block-title">Match</p>
+        <p>{{matchInfo.data.match_data.players}}</p>
+      </div>
+      <div class="play-time-section">
+        <p class="info-block-title">Play time</p>
+        <p>{{matchTime}}</p>
+      </div>
+    </div>
+
+    <div class="info-cards-wrapper">
+      <div class="table-card">
+        <div class="table-card-title">
+          <h3>Full time probabilities</h3>
+        </div>
+        <div class="table-card-wrap two-tables">
+          <table>
+            <thead>
+            <tr class="table-head-tr">
+              <th colspan="3">1X2 Current Season</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>1</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.home_draw_away.home * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.home_draw_away.home).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>x</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.home_draw_away.draw * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.home_draw_away.draw).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.home_draw_away.away * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.home_draw_away.away).toFixed(2)}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <table>
+            <thead>
+            <tr class="table-head-tr">
+              <th colspan="3">1X2 Long Term</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>1</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.home * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.home).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>x</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.draw * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.draw).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.away * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.all_seasons.full_time.home_draw_away.away).toFixed(2)}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="two-table-divider"></div>
+          <table>
+            <thead>
+            <tr class="table-head-tr">
+              <th colspan="3">DC Current Season</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>1x</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.double_chance["1X"] * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.double_chance["1X"]).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>12</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.double_chance["12"] * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.double_chance["12"]).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>x2</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.double_chance["X2"] * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.double_chance["X2"]).toFixed(2)}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <table>
+            <thead>
+            <tr class="table-head-tr">
+              <th colspan="3">DC Long Term</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>1x</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.all_seasons.full_time.double_chance["1X"] * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.all_seasons.full_time.double_chance["1X"]).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>12</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"] * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"]).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th>x2</th>
+              <td
+                class="td-centered">{{(matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"] * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.all_seasons.full_time.double_chance["12"]).toFixed(2)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-card-title">
+          <h3>Over/Under (O/U)</h3>
+        </div>
+        <div class="table-card-wrap no-border">
+          <table>
+            <tbody class="table-centered">
+            <tr class="p40-head">
+              <th>+0.5</th>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].over * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].over).toFixed(2)}}</td>
+              <td>-0.5</td>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].under * 100).toFixed(2)}}%
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["0.50"].under).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th scope="row">+1.5</th>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].over * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].over).toFixed(2)}}</td>
+              <td>-1.5</td>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].under * 100).toFixed(2)}}%
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["1.50"].under).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th scope="row">+2.5</th>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].over * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].over).toFixed(2)}}</td>
+              <td>-2.5</td>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].under * 100).toFixed(2)}}%
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["2.50"].under).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th scope="row">+3.5</th>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].over * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].over).toFixed(2)}}</td>
+              <td>-3.5</td>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].under * 100).toFixed(2)}}%
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["3.50"].under).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th scope="row">+4.5</th>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["4.50"].over * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["4.50"].over).toFixed(2)}}</td>
+              <td>-4.5</td>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["4.50"].under * 100).toFixed(2)}}%
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].under).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <th scope="row">+5.5</th>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].over * 100).toFixed(2)}}
+                %
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].over).toFixed(2)}}</td>
+              <td>-5.5</td>
+              <td>{{(matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].under * 100).toFixed(2)}}%
+              </td>
+              <td>{{(1 / matchInfo.data.probabilities.current_season.full_time.over_under["5.50"].under).toFixed(2)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-cards-wrapper">
+      <div class="table-card-wrapper">
+        <div class="table-card">
+          <div class="table-card-title">
+            <h3>BTTS</h3>
+          </div>
+          <div class="table-card-wrap">
+            <table>
+              <tbody>
+              <tr class="p40-all">
+                <th>Yes</th>
+                <td
+                  class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.btts.yes * 100).toFixed(2)}}
+                  %
+                </td>
+                <td
+                  class="td-centered">{{(1 / matchInfo.data.probabilities.current_season.full_time.btts.yes).toFixed(2)}}</td>
+                <td class="td-centered">NO</td>
+                <td
+                  class="td-centered">{{(matchInfo.data.probabilities.current_season.full_time.btts.no * 100).toFixed(2)}}
+                  %
+                </td>
+                <td
+                  class="td-centered">{{(1 / matchInfo.data.probabilities.current_season.full_time.btts.no).toFixed(2)}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-title">
+            <h3>Over/Under last five matches form</h3>
+          </div>
+          <div class="table-card-wrap">
+            <table>
+              <tbody>
+              <tr class="p40-head p-20-td">
+                <th>0.5</th>
+                <td class="text-main-dark-bold td-centered">{{firstPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['0.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th></th>
+                <td class="text-main-dark-bold td-centered">{{secondPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['0.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th>1.5</th>
+                <td class="text-main-dark-bold td-centered">{{firstPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['1.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th></th>
+                <td class="text-main-dark-bold td-centered">{{secondPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['1.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th>2.5</th>
+                <td class="text-main-dark-bold td-centered">{{firstPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['2.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th></th>
+                <td class="text-main-dark-bold td-centered">{{secondPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['2.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th>3.5</th>
+                <td class="text-main-dark-bold td-centered">{{firstPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['3.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th></th>
+                <td class="text-main-dark-bold td-centered">{{secondPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['3.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th>4.5</th>
+                <td class="text-main-dark-bold td-centered">{{firstPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['4.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th></th>
+                <td class="text-main-dark-bold td-centered">{{secondPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['4.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td">
+                <th>5.5</th>
+                <td class="text-main-dark-bold td-centered">{{firstPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.over_under['5.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              <tr class="p-20-td p40-all">
+                <th></th>
+                <td class="text-main-dark-bold td-centered">{{secondPlayer}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['0'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['1'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['2'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['3'] | ucFirst}}</td>
+                <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.over_under['5.50'].last_matches['4'] | ucFirst}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
 
+      <div class="table-card-wrapper">
+        <div class="table-card">
+          <div class="table-card-title">
+            <h3>Full time stats data</h3>
+          </div>
+          <div class="table-card-wrap">
+            <table>
+              <thead>
+              <tr class="table-head-tr">
+                <th colspan="3" class="pt-23">Team result last five matches</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th class="green">{{firstPlayer}}</th>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['1']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['2']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['3']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['4']}}</td>
+              </tr>
+              <tr>
+                <th class="green">{{secondPlayer}}</th>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['1']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['2']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['3']}}</td>
+                <td
+                  class="td-centered">{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['4']}}</td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="two-table-divider"></div>
+            <table>
+              <thead>
+              <tr class="table-head-tr">
+                <th colspan="5">Season results</th>
+                <th colspan="2">Season average goals</th>
+              </tr>
+              <tr class="table-head-tr">
+                <th colspan="1"></th>
+                <th class="td-centered pt-23">Won</th>
+                <th class="td-centered pt-23">Draw</th>
+                <th class="td-centered pt-23">Lost</th>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <th class="td-centered pt-23">Scored</th>
+                <th class="td-centered pt-23">Conceded</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th class="pt-15">{{firstPlayer}}</th>
+                <td
+                  class="td-centered pt-15">{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.won}}</td>
+                <td
+                  class="td-centered pt-15">{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.draw}}</td>
+                <td
+                  class="td-centered pt-15">{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.lost}}</td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td
+                  class="td-centered pt-15">{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_scored).toFixed(2)}}</td>
+                <td
+                  class="td-centered pt-15">{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_conceded).toFixed(2)}}</td>
+              </tr>
+              <tr>
+                <th class="pt-15">{{secondPlayer}}</th>
+                <td
+                  class="td-centered pt-15">{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.won}}</td>
+                <td
+                  class="td-centered pt-15">{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.draw}}</td>
+                <td
+                  class="td-centered pt-15">{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.lost}}</td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td
+                  class="td-centered pt-15">{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_scored).toFixed(2)}}</td>
+                <td
+                  class="td-centered pt-15">{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_conceded).toFixed(2)}}</td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="two-table-divider"></div>
+            <table class="half-table">
+              <thead>
+              <tr class="table-head-tr">
+                <th colspan="2">Suggested Correct Scores</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td
+                  class="pl-10 table-bold-text">{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.home}}
+                  -{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.away}}</td>
+                <td
+                  class="table-bold-text">{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.home}}
+                  -{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.away}}</td>
+                <th>&nbsp;</th>
+              </tr>
+              <tr>
+                <td
+                  class="pl-10 table-bold-text pb-40-mobile">{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.home}}
+                  -{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.away}}</td>
+                <td
+                  class="table-bold-text">{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.home}}
+                  -{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.away}}</td>
+                <th class="pb-40">&nbsp;</th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--    <mat-card>-->
+    <!--      <table class="table">-->
+    <!--        <thead>-->
+    <!--        <tr class="green">-->
+    <!--          <th class="central" colspan="8">Full time probabilities</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--      </table>-->
+    <!--    </mat-card>-->
 
 
+    <!--    <mat-card>-->
+    <!--      <table class="table">-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--          <th class="central green" colspan="8">Full time stats data</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr>-->
+    <!--          <th class="central violet" colspan="6">Team result last five matches</th>-->
 
+    <!--        </tr>-->
+    <!--        <tr>-->
+    <!--          <th class="green">{{firstPlayer}}</th>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['1']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['2']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['3']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['4']}}</td>-->
 
+    <!--        </tr>-->
+    <!--        <tr>-->
+    <!--          <th class="green">{{secondPlayer}}</th>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['1']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['2']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['3']}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['4']}}</td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--      </table>-->
+    <!--    </mat-card>-->
 
+    <!--    <mat-card>-->
+    <!--      <table class="table">-->
+    <!--        <thead>-->
+    <!--        <tr class="violet">-->
+    <!--          <th colspan="3">season results</th>-->
+    <!--          <td scope="col" colspan="3">season average goals</td>-->
+    <!--        </tr>-->
+    <!--        <tr>-->
+    <!--          <th colspan="1"></th>-->
+    <!--          <th scope="col">won</th>-->
+    <!--          <td scope="col">draw</td>-->
+    <!--          <td scope="col">lost</td>-->
+    <!--          <td scope="col">scored</td>-->
+    <!--          <td scope="col">conceded</td>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr>-->
+    <!--          <th class="green" scope="row">{{firstPlayer}}</th>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.won}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.draw}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.lost}}</td>-->
+    <!--          <td>{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_scored).toFixed(2)}}</td>-->
+    <!--          <td>{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_conceded).toFixed(2)}}</td>-->
+    <!--        </tr>-->
+    <!--        <tr>-->
+    <!--          <th class="green" scope="row">{{secondPlayer}}</th>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.won}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.draw}}</td>-->
+    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.lost}}</td>-->
+    <!--          <td>{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_scored).toFixed(2)}}</td>-->
+    <!--          <td>{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_conceded).toFixed(2)}}</td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--      </table>-->
+    <!--    </mat-card>-->
 
+    <!--    <mat-card>-->
+    <!--      <table class="table">-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--          <th class="central violet" scope="row" colspan="7">Over/Under last five matches form</th>-->
 
+    <!--        </tr>-->
+    <!--        </thead>-->
 
+    <!--      </table>-->
+    <!--    </mat-card>-->
 
+    <!--    <mat-card>-->
+    <!--      <table class="table">-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--          <th class="central violet" scope="row" colspan="4">Suggested Correct Scores</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr>-->
+    <!--          <th>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.home}}-->
+    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.away}}</th>-->
+    <!--          <td>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.home}}-->
+    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.away}}</td>-->
+    <!--        </tr>-->
+    <!--        <tr>-->
+    <!--          <th>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.home}}-->
+    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.away}}</th>-->
+    <!--          <td>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.home}}-->
+    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.away}}</td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--      </table>-->
+    <!--    </mat-card>-->
+  </div>
+</div>
+<app-footer></app-footer>

@@ -25,6 +25,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   passforgot = false;
   remember = false;
 
+  email: string;
+  secondMessage = 'If your don’t receive the email within a few minutes, please try again.';
+  action = 'to reset your password';
+  visible = false;
+
+
 
   constructor(
     private authService: AuthService,
@@ -90,11 +96,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
           this.getUserTimeZone(data.id);
           this.router.navigate([`/main/${data.id}`]);
           this.profileService.profileId.next(data.id);
-
+          this.signUpService.setEvent({userId: data.id});
         },
         err => {
           this.networkingErr = true;
-          console.log(err);
           this.message = err.message;
         }
       );
@@ -107,8 +112,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.authService.postResend(data)
       .subscribe(
         () => {
-          //this.router.navigate([`/login`])
-          this.notes = "Has been sent to your email"
+          // this.router.navigate([`/login`])
+          this.notes = 'Has been sent to your email';
         },
         err => {
           this.networkingErr = true;
@@ -117,16 +122,25 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       );
   }
 
+  closeModal(bool) {
+    this.visible = bool;
+    this.passforgot = false;
+    this.signUpService.setEvent({signUp: false, signIn: false, top: 0});
+  }
+
   onSend() {
-    console.log(this.otherForm.value.email)
+    console.log(this.otherForm.value.email);
     const data = {
       email: this.otherForm.value.email
-    }
+    };
     this.aSup = this.authService.meilSend(data)
-      .subscribe(() => this.notes = 'Has been sent to your email',
-        err => {
+      .subscribe(() => {
+        this.notes = 'Has been sent to your email';
+        this.visible = true;
+        this.email = this.otherForm.value.email;
+        },
+        (err) => {
           this.networkingErr = true;
-          console.log(err);
           this.message = err.message;
         }
       );

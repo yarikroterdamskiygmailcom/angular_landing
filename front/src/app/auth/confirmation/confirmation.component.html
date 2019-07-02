@@ -1,0 +1,17 @@
+<div *ngIf="visible" class="confirmation-card-bg" (click)="closeModal()"></div>
+
+<div *ngIf="visible" class="confirmation-card">
+  <div class="confirmation-card-icon">
+    <img src="assets/img/icons/envelope.svg" alt="">
+  </div>
+  <div class="confirmation-body">
+    <p class="confirmation-message">We sent an to
+      <span><b>{{email}}</b></span>
+      with a link
+      <span>{{action}}</span>
+    </p>
+    <p class="action">
+      {{secondMessage}}
+    </p>
+  </div>
+</div>

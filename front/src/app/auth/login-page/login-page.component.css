@@ -1,3 +1,8 @@
+.auth-card{
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .sign-in-error {
   font-style: normal;
   font-weight: normal;
@@ -110,6 +115,7 @@
   line-height: 19px;
   text-decoration-line: underline;
   color: #7A7A7A;
+  cursor: pointer;
 }
 
 .back-to-sign-in > span{

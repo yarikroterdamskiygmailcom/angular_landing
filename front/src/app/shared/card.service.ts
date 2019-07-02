@@ -24,14 +24,14 @@ export class CardService {
 
   createCard(card): Observable<{ any }> {
     console.log('OOOOO', card)
-    return this.http.post<{ any }>('http://localhost:4000/matches/stripe/payment', { card })
+    return this.http.post<{ any }>('/matches/stripe/payment', { card })
       .pipe(
         catchError(this.handleError)
       );
   }
   payViaPaypal(card): Observable<{ any }> {
     console.log('OOOOO', card)
-    return this.http.post<{ any }>('http://localhost:4000/matches/paypal/payment', { card })
+    return this.http.post<{ any }>('/matches/paypal/payment', { card })
       .pipe(
         catchError(this.handleError)
       );
@@ -39,7 +39,7 @@ export class CardService {
 
   paypalConfirm(userId, price, tariff, paymentId, payerID): Observable<{ any }> {
 
-    return this.http.get<{ any }>(`http://localhost:4000/matches/paypal/result/${userId}/${price}/${tariff}/${paymentId}/${payerID}`)
+    return this.http.get<{ any }>(`/matches/paypal/result/${userId}/${price}/${tariff}/${paymentId}/${payerID}`)
       .pipe(
         catchError(this.handleError)
       );

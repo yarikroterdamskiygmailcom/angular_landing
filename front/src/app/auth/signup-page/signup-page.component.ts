@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {AuthService} from 'src/app/shared/auth.service';
 import {Subscription} from 'rxjs';
@@ -16,6 +16,11 @@ export class SignupPageComponent implements OnInit, OnDestroy {
   networkingErr = false;
   limits = true;
   privacy = true;
+
+  email;
+  confirmationVisible;
+  secondMessage = 'Please follow the link indicated in the letter.';
+  action = 'to account activation.';
 
 
   constructor(private authService: AuthService,
@@ -36,12 +41,15 @@ export class SignupPageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.aSup = this.authService.register(this.form.value)
-      .subscribe(
-        () => this.router.navigate(['/login'], {
-          queryParams: {
-            registered: true
-          }
-        }),
+      .subscribe(() => {
+          this.email = this.form.value.email;
+          this.confirmationVisible = true;
+          // this.router.navigate(['/login'], {
+          //   queryParams: {
+          //     registered: true
+          //   }
+          // });
+        },
         err => {
           this.networkingErr = true;
           console.log(err);
@@ -50,6 +58,11 @@ export class SignupPageComponent implements OnInit, OnDestroy {
   }
 
   closeSignUp() {
+    this.signUpService.setEvent({signUp: false, signIn: false, top: 0});
+  }
+
+  checkConfirmOpen(bool) {
+    this.confirmationVisible = bool;
     this.signUpService.setEvent({signUp: false, signIn: false, top: 0});
   }
 

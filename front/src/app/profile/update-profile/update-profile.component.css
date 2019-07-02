@@ -1,13 +1,158 @@
-input.ng-invalid.ng-touched,
-textarea.ng-invalid.ng-touched {
-    border: 1px solid red;
+.profile-card{
+  max-width: 875px;
+  width: 100%;
+
+  background: #FCFCFC;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 5px;
+  padding: 70px;
+  position: relative;
 }
-button.btn {
-    margin:20px;
+
+
+.page-title{
+  position: absolute;
+  top: 90px;
+  left: 0;
 }
-.dn {
-    display: none;
+
+.profile-bg{
+  display: flex;
+  justify-content: center;
+  padding: 150px 0;
+  width: 100%;
+  min-height: calc(100vh - 170px);
+  background: url("../../../assets/img/profile_bg.svg") 70px 105px
+}
+
+.profile-card > form{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.profile-info-block{
+  width: 43.7%;
+}
+
+.profile-avatar-block{
+  width: 56.3%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+.profile-submit-block{
+  padding-top: 50px;
+  padding-left: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.profile-submit-block > button{
+  margin-right: 30px;
+}
+
+.form-group > label{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444444;
+  margin-left: 0;
+  line-height: 0;
+}
+
+.form-group {
+  margin-top: 22px;
+}
+
+.profile-info-block > .form-group:first-child{
+  margin-top: 0;
+}
+
+.general-input{
+  position: relative;
+}
+
+/deep/.mat-datepicker-toggle{
+  position: relative;
+}
+
+/deep/.mat-icon-button{
+  position: absolute !important;
+  top: -8px;
+  right: 13px;
+}
+
+.mat-custom-input{
+  margin-top: 18px !important;
+}
+
+.current-zone{
+  padding-top: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #7A7A7A;
+}
+
+.avatar-placeholder{
+  width: 200px;
+  height: 200px;
+  background: #F1F1F1;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.load-avatar-button{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+  color: #444444;
+  margin-top: 19px;
+}
+
+@media screen and (max-width: 600px){
+  .profile-submit-block{
+    padding: 50px 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
-  .h200 {
-    height: 200px;
+
+  .profile-submit-block > button{
+    margin-right: 0;
   }
+
+  .profile-info-block{
+    width: 100%;
+  }
+
+  .profile-avatar-block{
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .profile-submit-block{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .profile-submit-block > button{
+    width: 100%;
+    max-width: unset !important;
+    margin-top: 20px;
+  }
+}

@@ -14,7 +14,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const baseUrl = environment.apiUrl;
-    if (req.url.substr(0, 1) === '/') {
+    if (req.url.substr(0, 1) === '/' && req.url.substr(0, 7) !== '/assets') {
       req = req.clone({
         url: baseUrl + req.url,
       });

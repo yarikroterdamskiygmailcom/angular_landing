@@ -1,4 +1,4 @@
-<div class="auth-card" id="sign-up-card">
+<div *ngIf="!confirmationVisible" class="auth-card" id="sign-up-card">
   <div class="close-auth-card" (click)="closeSignUp()">
     <i class="fas fa-times"></i>
   </div>
@@ -59,7 +59,15 @@
       </span>
     </div>
     <div>
-      <button [disabled]="form.invalid" class="yellow-button yellow-button-container sign-up-button" type="submit">Sign up</button>
+      <button [disabled]="form.invalid" class="yellow-button yellow-button-container sign-up-button" type="submit">Sign
+        up
+      </button>
     </div>
   </form>
 </div>
+
+<app-confirmation
+  [visible]="confirmationVisible" [email]="email"
+  [secondMessage]="secondMessage" [action]="action" (modalClose)="checkConfirmOpen()">
+</app-confirmation>
+

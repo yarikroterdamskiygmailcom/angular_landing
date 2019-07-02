@@ -57,8 +57,6 @@ export class ChangePasswordComponent implements OnInit {
     this.authService.changepass(data)
       .subscribe(
         (user) => {
-
-          console.log("Lena")
           this.router.navigate([`/login`])
         },
         err => {

@@ -1,0 +1,68 @@
+.confirmation-card{
+  position: fixed;
+  max-width: 586px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000000;
+
+  background: #FCFCFC;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 5px;
+  width: 100%;
+  padding: 70px;
+  height: 260px;
+}
+
+.confirmation-card-bg{
+  position: fixed;
+  z-index: calc(1000000 - 2);
+  background: rgba(0,0,0,.6);
+  width: 100%;
+  min-height: 100vh;
+}
+
+.confirmation-card-icon{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 86px;
+  height: 86px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FCFCFC;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 50%;
+}
+
+.confirmation-body{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+}
+
+.action{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+  color: #444444;
+}
+
+.confirmation-message{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  color: #444444;
+}
+
+.confirmation-message > span > b{
+  font-weight: bold !important;
+}

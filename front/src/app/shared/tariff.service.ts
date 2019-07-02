@@ -12,14 +12,14 @@ export class TariffService {
   constructor(private http: HttpClient) { }
 
   getTariff(id: string): Observable<Tariff> {
-    return this.http.get<Tariff>(`http://localhost:4000/matches/tariff/get/${id}`)
+    return this.http.get<Tariff>(`/matches/tariff/get/${id}`)
       .pipe(
         catchError(this.handleError)
       );
   }
 
   getAll(): Observable<Tariff[]> {
-    return this.http.get<Tariff[]>('http://localhost:4000/matches/tariff/getall')
+    return this.http.get<Tariff[]>('/matches/tariff/getall')
       .pipe(
         catchError(this.handleError)
       );

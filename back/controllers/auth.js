@@ -73,10 +73,6 @@ module.exports.register = async function (req, res) {
       const token = await new Token({
         _userId: user._id, token: crypto.randomBytes(16).toString('hex')
       }).save();
-      console.log(process.env.USER_NAME)
-      console.log(process.env.PASSWORD)
-      console.log(user.email)
-
 
       const transporter = await nodemailer.createTransport({
 
@@ -92,8 +88,6 @@ module.exports.register = async function (req, res) {
 
 
       const link = `http://localhost:4200/verify/${user.email}?id=` + token.token;
-      console.log("TOKEN", token.token)
-      console.log(link)
       const mailOptions = {
         to: user.email,
         subject: 'Please confirm your Email account',
@@ -228,13 +222,19 @@ module.exports.checkEmail = async function (req, res) {
       // Send the email
       const transporter = await nodemailer.createTransport({
 
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        requireTLS: true,
+        // host: 'smtp.gmail.com',
+        // port: 587,
+        // secure: false,
+        // requireTLS: false,
+        // auth: {
+        //   user: process.env.USER_NAME,
+        //   pass: process.env.PASSWORD
+        // }
+
+        service: 'Gmail',
         auth: {
-          user: process.env.USER_NAME,
-          pass: process.env.PASSWORD
+          user: 'test', // Please, set Your data
+          pass: 'test' // Please, set Your data
         }
       });
 
