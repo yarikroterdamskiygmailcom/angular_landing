@@ -1,60 +1,181 @@
-mat-grid-tile {
-  background: rgb(240, 240, 243);
+.back-button-wrapper {
+  position: absolute;
+  left: 24px;
+  top: 222px;
 }
-.example-card {
-  max-width: 400px;
+
+.back-button-wrapper > button {
+  border: 2px solid #FFCA00;
+  background: transparent;
+  width: 186px;
 }
-example-container {
-  width: 400px;
+
+.price-cards-wrapper {
+  padding-top: 153px;
+  width: 100%;
   max-width: 100%;
-  margin: 0 25px 25px 0;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.example-list {
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
-}
-
-.example-box {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  background: white;
+  margin-left: -2px;
+}
+
+.price-card {
+  width: 23%;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0 1px 8px rgba(53, 35, 109, 0.2);
+  border-radius: 5px;
+  max-width: 255px;
+  overflow: hidden;
+}
+
+.price-card:last-child {
+  margin-right: 0;
+}
+
+.price-card-header {
+  width: 100%;
+  background: url("../../assets/img/landing/price-card.svg") no-repeat;
+  background-size: 100%;
+}
+
+.price-card-header > p {
+  padding: 34px 0 44px 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 150%;
+  color: #FFFFFF;
+}
+
+.price-card-content {
+  padding: 8px 0 40px 0;
+  width: 100%;
+}
+
+.price-card-price {
+  text-align: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 150%;
+  color: #444444;
+}
+
+.price-card-price > p {
+  margin-left: -8px;
+}
+
+.card-price-currency {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 150%;
+  color: #444444;
+  margin-right: 11px;
+}
+
+.wrapper {
+
+}
+
+.card-price-value {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 150%;
+  color: #444444;
+}
+
+.card-price-duration {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #444444;
+}
+
+.price-card-advantage {
+  padding: 23px 0 0 77px;
+}
+
+.price-card-advantage > ul > li {
+  list-style-image: url("../../assets/img/icons/check_mark.svg");
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.price-card-advantage > ul > li > span {
+  font-style: normal;
+  font-weight: normal;
   font-size: 14px;
+  line-height: 150%;
+  color: #7A7A7A;
+  padding-left: 10px;
 }
 
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+.price-card-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
 }
 
-.cdk-drag-placeholder {
-  opacity: 0;
+.price-card-button > a {
+  text-decoration: none;
 }
 
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+.plan-button {
+  width: 190px;
 }
 
-.example-box:last-child {
-  border: none;
+@media screen and (max-width: 1040px) {
+  .price-cards-wrapper {
+    margin-left: 0;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .price-card-header {
+    background-size: cover;
+  }
+
+  .price-card-header > p {
+    padding: 12% 0 20% 0;
+  }
+
+  .price-card-advantage {
+    display: flex;
+    justify-content: center;
+    padding: 23px 0 0 0;
+  }
+
+  .price-card {
+    width: 40% !important;
+    margin-bottom: 90px;
+    max-width: unset;
+  }
 }
 
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+@media screen and (max-width: 768px) {
+  .page-title {
+    padding: 20px 0 0 24px;
+  }
+
+  .back-button-wrapper {
+    top: 150px;
+    margin: 0;
+  }
+
+  .price-card {
+    width: 48% !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .price-card {
+    width: 95% !important;
+  }
 }

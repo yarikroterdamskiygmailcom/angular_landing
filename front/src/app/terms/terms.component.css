@@ -1,0 +1,33 @@
+.privacy-wrapper{
+  padding: 180px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.page-title{
+  position: absolute;
+  padding: 0;
+  top: 170px;
+  left: 24px;
+}
+
+.privacy-block{
+  width: 100%;
+  max-width: 860px;
+}
+
+.privacy-block > p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #444444;
+  margin-bottom: 21px;
+  text-align: justify;
+}
+
+@media screen and (max-width: 940px){
+  .privacy-block{
+    padding: 0 24px;
+  }
+}

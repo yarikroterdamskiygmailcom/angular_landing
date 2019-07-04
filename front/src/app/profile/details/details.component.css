@@ -1,11 +1,392 @@
-example-card {
-  max-width: 400px;
+.profile-card {
+  max-width: 875px;
+  width: 100%;
+
+  background: #FCFCFC;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 5px;
+  padding: 70px;
+  position: relative;
+  margin-top: 9px;
 }
 
-.example-header-image {
-  
-  background-size: cover;
+.general-input {
+  color: #7A7A7A !important;
 }
-h2 {
-  color: red;
+
+
+.page-title {
+  position: absolute;
+  top: 90px;
+  left: 0;
+}
+
+.profile-bg {
+  display: flex;
+  justify-content: center;
+  padding: 127px 0;
+  width: 100%;
+  min-height: calc(100vh - 170px);
+  background: url("../../../assets/img/profile_bg.svg") 70px 105px;
+  flex-wrap: wrap;
+}
+
+.profile-card > form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.profile-info-block {
+  width: 43.7%;
+}
+
+.profile-avatar-block {
+  width: 56.3%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.profile-submit-block {
+  padding-top: 53px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-group > label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444444;
+  margin-left: 0;
+  line-height: 0;
+}
+
+.form-group {
+  margin-top: 22px;
+}
+
+.profile-info-block > .form-group:first-child {
+  margin-top: 0;
+}
+
+.general-input {
+  position: relative;
+}
+
+/deep/ .mat-datepicker-toggle {
+  position: relative;
+}
+
+/deep/ .mat-icon-button {
+  position: absolute !important;
+  top: -8px;
+  right: 13px;
+}
+
+.mat-custom-input {
+  margin-top: 18px !important;
+}
+
+.current-zone {
+  padding-top: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #7A7A7A;
+}
+
+.avatar-placeholder {
+  width: 200px;
+  height: 200px;
+  background: #F1F1F1;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.load-avatar-button {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+  color: #444444;
+  margin-top: 19px;
+}
+
+.profile-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 35px 0 29px 0;
+  width: 70%;
+}
+
+
+.profile-tabs > span {
+  padding: 0 22px 0 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444444;
+  cursor: pointer;
+}
+
+span.active {
+  color: #35236D !important;
+}
+
+.profile-underline-wrapper {
+  position: relative;
+  max-width: 260px;
+  width: 100%;
+  height: 1px;
+  background: #C4C4C4;;
+  margin: 8px auto 0 auto;
+}
+
+.profile-underline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  background: #35236D;
+  transition: all .25s ease-in-out;
+}
+
+.left {
+  left: 0;
+  width: 36%;
+  transition: all .25s ease-in-out;
+}
+
+.right {
+  left: 50%;
+  width: 50%;
+  transition: all .25s ease-in-out;
+}
+
+.profile-plan-card-wrapper {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.back-button-wrapper {
+  position: absolute;
+  left: 24px;
+  margin-top: 6px;
+}
+
+.back-button-wrapper > button {
+  border: 2px solid #FFCA00;
+  background: transparent;
+  width: 186px;
+}
+
+/deep/ footer {
+  margin-top: 15px;
+}
+
+
+/* PLAN CARD */
+
+
+.price-card {
+  width: 28.5%;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  align-items: center;
+  background: #FCFCFC;
+  border-radius: 5px;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  overflow: hidden;
+  min-width: 383px;
+}
+
+.price-card:last-child {
+  margin-right: 0;
+}
+
+.price-card-header {
+  width: 100%;
+  background: url("../../../assets/img/profile/card_header.svg") no-repeat;
+  background-size: cover;
+  height: 120px;
+}
+
+.price-card-header > p {
+  padding: 36px 0 44px 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 150%;
+  color: #FFFFFF;
+}
+
+.price-card-content {
+  width: 100%;
+  padding: 59px 65px 70px 70px;
+}
+
+
+.price-card-button {
+  width: calc(100% - 6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 43px;
+}
+
+.price-card-button > a {
+  width: 186px;
+  text-decoration: none;
+}
+
+.card-info-block {
+  text-align: left;
+  margin: 30px 0 23px 0;
+  display: flex;
+  justify-content: flex-start;
+  min-height: 33px;
+}
+
+.card-info-block:first-child {
+  margin-top: 0;
+  margin-bottom: 19px;
+}
+
+.card-info-block > .card-icon {
+  min-width: 57px;
+  display: block;
+}
+
+.card-info-block-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444444;
+}
+
+.price-title {
+  padding-top: 0 !important;
+  display: flex;
+  align-items: center !important;
+}
+
+.card-info-price {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #444444;
+  display: flex;
+  padding-left: 17px;
+  padding-top: 5px !important;
+}
+
+.card-info-divider {
+  background: #E0E0E0;
+  width: calc(100% + 140px);
+  margin-left: -70px;
+  height: 1px;
+}
+
+.card-data {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.card-info-block-title {
+  padding-top: 4px;
+  padding-left: 2px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.card-info-block-content {
+  display: block;
+  padding: 5px 0;
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #7A7A7A;
+}
+
+.card-data > span:nth-child(2) {
+  padding-top: 10px;
+}
+
+
+/* PLAN CARD END */
+
+@media screen and (max-width: 768px) {
+  .page-title {
+    padding: 20px 0 0 24px;
+  }
+
+  .back-button-wrapper {
+    top: 150px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-submit-block {
+    padding: 50px 0 0 0;
+    width: 100%;
+  }
+
+  .profile-card {
+    padding: 70px 20px;
+  }
+
+  .profile-info-block {
+    width: 100%;
+  }
+
+  .profile-avatar-block {
+    padding-top: 50px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .profile-submit-block > button {
+    width: 100%;
+    max-width: unset !important;
+    margin-top: 20px;
+  }
+
+  .profile-tabs-wrapper {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile-tabs-wrapper {
+    width: 100%;
+  }
+
+  .profile-plan-card-wrapper {
+    width: 100%;
+  }
+
+  .price-card {
+    min-width: unset;
+    width: 100%;
+    border-radius: 0 !important;
+  }
 }

@@ -1,34 +1,72 @@
-<mat-error *ngIf="networkingErr">
-  Something went wrong please try again
-</mat-error>
-<div class="col-md-12">
-  <section id="cart">
-    <div class="container-fluid p-5">   
-      
-        <button class="btn btn-warning btn-block"><a (click)="back()">Back to Profile</a></button>
-     
-      </div>
-  </section>
-</div>
+<div class="body-bg">
+  <div class="profile-bg">
+    <mat-error *ngIf="networkingErr">
+      Something went wrong please try again
+    </mat-error>
 
-<div class="container">
-<div class="card-deck mb-3 text-center">
-    <div *ngFor="let tariff of tariffs, let i = index">
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">{{tariff.name}}</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">{{tariff.price}} <small class="text-muted">/ {{tariff.currency}}</small></h1>
-        <ul class="list-unstyled mt-3 mb-4" *ngFor="let benefit of tariff.benefits">
-          <li>{{benefit}}</li>          
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary" (click)="pay(i)">Pay</button>
+    <div class="page-title">
+      <h1>Tariff plan page</h1>
+    </div>
+
+    <div class="back-button-wrapper">
+      <button class="yellow-button-container yellow-button standard-button-width" (click)="back()">
+        Back to Profile
+      </button>
+    </div>
+
+    <div class="wrapper">
+      <div class="container">
+        <div class="row price-cards-wrapper">
+          <div *ngFor="let tariff of tariffs, let i = index" class="price-card">
+            <div class="price-card-header">
+              <p>{{tariff.name}}</p>
+            </div>
+            <div class="price-card-content">
+              <div class="price-card-price">
+                <p>
+                  <span class="card-price-currency">€</span>
+                  <span class="card-price-value">{{tariff.price}}</span>
+                  <span class="card-price-duration">/{{tariff.currency}}</span>
+                </p>
+              </div>
+              <div class="price-card-advantage">
+                <ul>
+                  <li *ngFor="let benefit of tariff.benefits">
+                    <span>{{benefit}}</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="price-card-button">
+                <a class="yellow-button yellow-button-container plan-button" (click)="pay($event, i)">Select Plan</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+<!--    <div *ngFor="let tariff of tariffs, let i = index">-->
+<!--      <div class="card mb-4 box-shadow">-->
+<!--        <div class="card-header">-->
+<!--          <h4 class="my-0 font-weight-normal">{{tariff.name}}</h4>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <h1 class="card-title pricing-card-title">{{tariff.price}}-->
+<!--            <small class="text-muted">/ {{tariff.currency}}</small>-->
+<!--          </h1>-->
+<!--          <ul class="list-unstyled mt-3 mb-4" *ngFor="let benefit of tariff.benefits">-->
+<!--            <li>{{benefit}}</li>-->
+<!--          </ul>-->
+<!--          <button type="button" class="btn btn-lg btn-block btn-primary" (click)="pay(i)">Pay</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
 </div>
-</div>
-</div>
+
+
+
 
 
 

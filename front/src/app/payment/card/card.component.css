@@ -1,52 +1,286 @@
-orm.checkout {
-  max-width: 500px;
-  margin: 2rem auto;
-  text-align: center;
-  border: 2px solid #eee;
-  border-radius: 8px;
-  padding: 1rem 2rem;
-  background: white;
+/*orm.checkout {*/
+/*  max-width: 500px;*/
+/*  margin: 2rem auto;*/
+/*  text-align: center;*/
+/*  border: 2px solid #eee;*/
+/*  border-radius: 8px;*/
+/*  padding: 1rem 2rem;*/
+/*  background: white;*/
 
-  font-family: monospace;
-  color: #525252;
-  font-size: 1.1rem;
+/*  font-family: monospace;*/
+/*  color: #525252;*/
+/*  font-size: 1.1rem;*/
+/*}*/
+
+/*form.checkout button {*/
+/*  padding: 0.5rem 1rem;*/
+/*  color: white;*/
+/*  background: coral;*/
+/*  border: none;*/
+/*  border-radius: 4px;*/
+/*  margin-top: 1rem;*/
+/*}*/
+
+/*form.checkout button:active {*/
+/*  background: rgb(165, 76, 43);*/
+/*}*/
+
+/*.StripeElement {*/
+/*  margin: 1rem 0 1rem;*/
+/*  background-color: white;*/
+/*  padding: 8px 12px;*/
+/*  border-radius: 4px;*/
+/*  border: 1px solid transparent;*/
+/*  box-shadow: 0 1px 3px 0 #e6ebf1;*/
+/*  -webkit-transition: box-shadow 150ms ease;*/
+/*  transition: box-shadow 150ms ease;*/
+/*}*/
+
+/*.StripeElement--focus {*/
+/*  box-shadow: 0 1px 3px 0 #cfd7df;*/
+/*}*/
+
+/*.StripeElement--invalid {*/
+/*  border-color: #fa755a;*/
+/*}*/
+
+/*.StripeElement--webkit-autofill {*/
+/*  background-color: #fefde5 !important;*/
+/*}*/
+/*h2 {*/
+/*  color: red;*/
+/*}*/
+
+.cards-wrapper {
+  padding: 32px 18.2% 0 18.2%;
+  display: flex;
+  justify-content: space-between;
 }
 
-form.checkout button {
-  padding: 0.5rem 1rem;
-  color: white;
-  background: coral;
-  border: none;
-  border-radius: 4px;
-  margin-top: 1rem;
+.description-card {
+  background: #FCFCFC;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 5px;
+  max-width: 465px;
+  padding: 70px 70px 70px 68px;
+  width: 39%;
 }
 
-form.checkout button:active {
-  background: rgb(165, 76, 43);
+.description-card > .card-title {
+  padding-top: 4px;
 }
 
-.StripeElement {
-  margin: 1rem 0 1rem;
-  background-color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid transparent;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
+.payment-tariff-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444444;
 }
 
-.StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+.payment-tariff {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #444444;
+  padding-top: 10px;
 }
 
-.StripeElement--invalid {
-  border-color: #fa755a;
+.card-body {
+  padding-top: 36px;
 }
 
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+.form-group {
+  margin-bottom: 19px;
 }
-h2 {
-  color: red;
+
+.form-group > label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444444;
+  margin-left: 0;
+}
+
+.form-group > .general-input {
+  min-height: 71px;
+  max-width: 321px;
+}
+
+.benefit {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #7A7A7A;
+}
+
+.price-input {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #444444;
+  padding: 0 12px;
+  min-height: unset !important;
+  height: 60px !important;
+}
+
+.benefits-input {
+  height: 78px;
+}
+
+.last-group {
+  margin-bottom: 0 !important;
+}
+
+.payment-method-card {
+  padding: 70px;
+  background: #FCFCFC;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 5px;
+  width: 59%;
+  max-height: 440px;
+}
+
+.method-card-title {
+  padding: 3px;
+  margin-bottom: 37px;
+}
+
+.payment-method-wrapper {
+  padding-bottom: 40px;
+}
+
+.payment-licence {
+  margin-top: 23px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #7A7A7A;
+}
+
+.payment-method-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-method-block > button {
+  border: 2px solid #FFCA00;
+  background: transparent;
+  width: 186px;
+}
+
+.stripe-icon {
+  width: 72px;
+  height: 30px;
+  margin-top: 6px;
+}
+
+.paypal-icon {
+  width: 124px;
+  height: 30px;
+  margin-top: 6px;
+}
+
+.payment-method-divider {
+  height: 1px;
+  background: #F1F1F1;
+  width: calc(100% + 140px);
+  margin-left: -70px;
+  margin-bottom: 39px;
+}
+
+/deep/ footer {
+  margin-top: 100px;
+}
+
+@media screen and (max-width: 1440px) {
+  .cards-wrapper {
+    padding: 32px 5% 0 5%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .cards-wrapper {
+    padding: 32px 24px 0 24px;
+  }
+
+  .description-card,
+  .payment-method-card {
+    max-width: unset;
+    width: 49%;
+    max-height: unset;
+  }
+
+
+
+  .description-card {
+    max-height: 558px;
+  }
+
+  .payment-method-block {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pay-icon-wrapper {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .description-card {
+    padding: 70px 25px;
+  }
+
+  .cards-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .description-card,
+  .payment-method-card {
+    max-width: unset;
+    width: 100%;
+    max-height: unset;
+    margin-bottom: 70px;
+  }
+
+  .card-body{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .form-group,
+  .card-title{
+    width: 80%;
+  }
+
+  .card-title{
+    margin: 0 auto;
+  }
+
+  .form-group > label{
+    display: block;
+    width: 100%;
+  }
+
+  .form-group > .general-input{
+    max-width: unset;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .form-group,
+  .card-title{
+    width: 95%;
+  }
 }

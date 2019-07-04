@@ -31,6 +31,8 @@ import {SignUpService} from './shared/sign-up.service';
 import {MatPaginatorModule} from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
 import { ConfirmationComponent } from './auth/confirmation/confirmation.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { TermsComponent } from './terms/terms.component';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +57,9 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     ucFirst,
     LandingComponent,
     FooterComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    PrivacyComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

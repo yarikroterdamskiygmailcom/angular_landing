@@ -1,76 +1,139 @@
-<div class="col-md-12">
-<section id="cart">
-  <div class="container-fluid p-5">  
-    <div  *ngIf="data.message">
-      <h2  class="display-2 text-center mt-5" >{{data.message}}</h2>       
-      
+<div class="body-bg">
+  <div class="profile-bg">
 
-       
-      
-      <button *ngIf="!data.message === 'Connected to PayPal Successfully.'"class="btn btn-warning btn-block"><a (click)="back()">Back to Profile</a></button>
+    <div *ngIf="data.message">
+      <h2 class="display-2 text-center mt-5">{{data.message}}</h2>
+
+      <button *ngIf="!data.message === 'Connected to PayPal Successfully.'" class="btn btn-warning btn-block"><a
+        (click)="back()">Back to Profile</a></button>
     </div>
-  
-   
-     <div *ngIf = "!data.message"class="row">
-      <div class="col-md-12">
-        <p class="lead font-weight-bold"> Cart</p>
-        <div class="row">
-            <div class="offset-6 col-2 d-none d-md-block">
-              <p>
-                <small class="text-muted">Price</small>
-              </p>
-            </div>
-            
+
+    <div class="page-title">
+      <h1>Proceed Payment page</h1>
+    </div>
+    <div class="cards-wrapper">
+      <div class="description-card">
+        <div class="card-title">
+          <p class="payment-tariff-title">Tariff plan:</p>
+          <p class="payment-tariff">{{selectedTariff.name}}</p>
         </div>
-        <hr class="mt-0">
-        <div  class="cartItem">
-          <div class="row">
-            
-            <div class="col-5 col-md-6">
-              <h5>
-                <a (click)="back()"> {{selectedTariff.name}} </a>                
-              </h5>
-              <p class="m-0">
-                <small class="text-muted"> {{selectedTariff.description}} </small>
-              </p>             
-              <a class="text-danger" (click)="back()">Delete</a>
-            </div>
-            <div class="col-1 col-md-2">
-              <h6 class="font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </h6>
-            </div>            
+        <div class="card-body">
+          <div class="form-group">
+            <label>Description:</label>
+            <textarea class="general-input" disabled>{{ selectedTariff.description }}</textarea>
           </div>
-          <hr>
+
+          <div class="form-group">
+            <label>Benefits:</label>
+            <div class="general-input benefits-input">
+              <p class="benefit" *ngFor="let benefit of selectedTariff.benefits">{{ benefit }}</p>
+            </div>
+          </div>
+
+          <div class="form-group last-group">
+            <label>Price:</label>
+            <input class="general-input price-input" [value]="selectedTariff.price" disabled>
+          </div>
         </div>
-        <h5 class="text-right">Total:
-          <span class="ml-1 font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </span>
-        </h5>
       </div>
-      <div class="col-md-6">       
-        <div class="card bg-light">
-          <div class="card-body">
-            <h5>Total:
-              <span class="ml-1 font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </span>
-            </h5>
-            <br>
-            <button class="btn btn-warning btn-block" (click)="checkout()" [disabled]="btnDisabled">Pay via Stripe</button>            
-          </div>
-        </div>  
-      </div> 
-      <div class="col-md-6">       
-          <div class="card bg-light">
-            <div class="card-body">
-              <h5>Total:
-                <span class="ml-1 font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </span>
-              </h5>
-              <br>
-              <button class="btn btn-warning btn-block" (click)="payViaPaypal()" [disabled]="btnDisabled">Pay via Paypal</button>            
+
+      <div class="payment-method-card">
+        <div class="method-card-title">
+          <p class="payment-tariff-title">Please select a payment system</p>
+        </div>
+
+        <div class="payment-method-wrapper">
+          <div class="payment-method-block">
+            <div class="pay-icon-wrapper">
+              <img class="stripe-icon" src="assets/img/stripe.png" alt="">
             </div>
-          </div>     
-       
-        </div> 
-     </div>    
+            <button class="yellow-button-container yellow-button" (click)="checkout()" [disabled]="btnDisabled">
+              Pay
+            </button>
+          </div>
+          <div class="payment-licence">
+            <span>In order to complete your transaction, we will transfer you over to Stripe secure servers.</span>
+          </div>
+        </div>
+
+        <div class="payment-method-divider">
+
+        </div>
+
+        <div class="payment-method-wrapper">
+          <div class="payment-method-block">
+            <div class="pay-icon-wrapper">
+              <img class="paypal-icon" src="assets/img/paypal.png" alt="">
+            </div>
+            <button class="yellow-button-container yellow-button" (click)="payViaPaypal()" [disabled]="btnDisabled">
+              Pay
+            </button>
+          </div>
+          <div class="payment-licence">
+            <span>In order to complete your transaction, we will transfer you over to PayPal's secure servers.</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
 </div>
+
+<app-footer></app-footer>
+
+
+<!--<div *ngIf="!data.message" class="row">-->
+<!--  <div class="col-md-12">-->
+<!--    <p class="lead font-weight-bold"> Cart</p>-->
+<!--    <div class="row">-->
+<!--      <div class="offset-6 col-2 d-none d-md-block">-->
+<!--        <p>-->
+<!--          <small class="text-muted">Price</small>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--    <div class="col-5 col-md-6">-->
+<!--      <h5>-->
+<!--        <a (click)="back()"> {{selectedTariff.name}} </a>-->
+<!--      </h5>-->
+<!--      <p class="m-0">-->
+<!--        <small class="text-muted"> {{selectedTariff.description}} </small>-->
+<!--      </p>-->
+<!--      <a class="text-danger" (click)="back()">Delete</a>-->
+<!--    </div>-->
+<!--    <div class="col-1 col-md-2">-->
+<!--      <h6 class="font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </h6>-->
+<!--    </div>-->
+<!--    <h5 class="text-right">Total:-->
+<!--      <span-->
+<!--        class="ml-1 font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </span>-->
+<!--    </h5>-->
+<!--  </div>-->
+<!--  <div class="col-md-6">-->
+<!--    <div class="card bg-light">-->
+<!--      <div class="card-body">-->
+<!--        <h5>Total:-->
+<!--          <span-->
+<!--            class="ml-1 font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </span>-->
+<!--        </h5>-->
+<!--        <button class="btn btn-warning btn-block" (click)="checkout()" [disabled]="btnDisabled">Pay via Stripe-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-md-6">-->
+<!--    <div class="card bg-light">-->
+<!--      <div class="card-body">-->
+<!--        <h5>Total:-->
+<!--          <span-->
+<!--            class="ml-1 font-weight-bold text-danger"> {{selectedTariff.price}}  {{selectedTariff.currency}} </span>-->
+<!--        </h5>-->
+<!--        <button class="btn btn-warning btn-block" (click)="payViaPaypal()" [disabled]="btnDisabled">Pay via-->
+<!--          Paypal-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 

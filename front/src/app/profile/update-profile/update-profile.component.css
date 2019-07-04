@@ -1,4 +1,4 @@
-.profile-card{
+.profile-card {
   max-width: 875px;
   width: 100%;
 
@@ -12,13 +12,13 @@
 }
 
 
-.page-title{
+.page-title {
   position: absolute;
   top: 90px;
   left: 0;
 }
 
-.profile-bg{
+.profile-bg {
   display: flex;
   justify-content: center;
   padding: 150px 0;
@@ -27,26 +27,25 @@
   background: url("../../../assets/img/profile_bg.svg") 70px 105px
 }
 
-.profile-card > form{
+.profile-card > form {
   display: flex;
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.profile-info-block{
+.profile-info-block {
   width: 43.7%;
 }
 
-.profile-avatar-block{
+.profile-avatar-block {
   width: 56.3%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  padding-top: 20px;
 }
 
-.profile-submit-block{
+.profile-submit-block {
   padding-top: 50px;
   padding-left: 5px;
   width: 100%;
@@ -54,11 +53,11 @@
   justify-content: flex-start;
 }
 
-.profile-submit-block > button{
+.profile-submit-block > button {
   margin-right: 30px;
 }
 
-.form-group > label{
+.form-group > label {
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -71,29 +70,29 @@
   margin-top: 22px;
 }
 
-.profile-info-block > .form-group:first-child{
+.profile-info-block > .form-group:first-child {
   margin-top: 0;
 }
 
-.general-input{
+.general-input {
   position: relative;
 }
 
-/deep/.mat-datepicker-toggle{
+/deep/ .mat-datepicker-toggle {
   position: relative;
 }
 
-/deep/.mat-icon-button{
+/deep/ .mat-icon-button {
   position: absolute !important;
   top: -8px;
   right: 13px;
 }
 
-.mat-custom-input{
+.mat-custom-input {
   margin-top: 18px !important;
 }
 
-.current-zone{
+.current-zone {
   padding-top: 8px;
   font-style: normal;
   font-weight: normal;
@@ -101,7 +100,7 @@
   color: #7A7A7A;
 }
 
-.avatar-placeholder{
+.avatar-placeholder {
   width: 200px;
   height: 200px;
   background: #F1F1F1;
@@ -112,7 +111,7 @@
 }
 
 
-.load-avatar-button{
+.load-avatar-button {
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -121,36 +120,41 @@
   margin-top: 19px;
 }
 
-@media screen and (max-width: 600px){
-  .profile-submit-block{
+@media screen and (max-width: 600px) {
+  .profile-submit-block {
     padding: 50px 0 0 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
 
-  .profile-submit-block > button{
+  .profile-card {
+    padding: 70px 20px;
+  }
+
+  .profile-submit-block > button {
     margin-right: 0;
   }
 
-  .profile-info-block{
+  .profile-info-block {
     width: 100%;
   }
 
-  .profile-avatar-block{
+  .profile-avatar-block {
     width: 100%;
     justify-content: center;
+    padding-top: 50px;
   }
 }
 
 @media screen and (max-width: 530px) {
-  .profile-submit-block{
+  .profile-submit-block {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
 
-  .profile-submit-block > button{
+  .profile-submit-block > button {
     width: 100%;
     max-width: unset !important;
     margin-top: 20px;

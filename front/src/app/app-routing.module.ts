@@ -14,6 +14,8 @@ import {EmailVerificationComponent} from './auth/email-verification/email-verifi
 import {ChangePasswordComponent} from './auth/change-password/change-password.component';
 import {MatchInfoComponent} from './main/match-info/match-info.component';
 import {LandingComponent} from './landing/landing.component';
+import {PrivacyComponent} from "./privacy/privacy.component";
+import {TermsComponent} from "./terms/terms.component";
 
 const appRoutes: Routes = [
   {
@@ -21,6 +23,8 @@ const appRoutes: Routes = [
       {path: '', component: LandingComponent, pathMatch: 'full'},
       {path: 'signup', component: SignupPageComponent},
       {path: 'login', component: LoginPageComponent},
+      {path: 'privacy', component: PrivacyComponent},
+      {path: 'terms', component: TermsComponent},
       {path: 'profile/:id', component: DetailsComponent, canActivate: [AuthGuardService]},
       {path: 'profile/edit/:id', component: UpdateProfileComponent, canActivate: [AuthGuardService]},
       {path: 'tariff/:id', component: TariffComponent, canActivate: [AuthGuardService]},

@@ -68,10 +68,6 @@ export class HeaderComponent implements OnInit {
     this.signUpService.setEvent({signUp: false, signIn: false, top: 0});
   }
 
-  openApp() {
-    this.router.navigate(['main/' + this.userId]);
-  }
-
   onLogout(e) {
     e.preventDefault();
     this.authService.logOut();

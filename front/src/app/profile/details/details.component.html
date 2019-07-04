@@ -1,61 +1,121 @@
-<mat-error *ngIf="networkingErr">
-  Something went wrong please try again
-</mat-error>
+<div class="body-bg">
+  <div class="profile-bg">
+    <div class="page-title">
+      <h1>Profile page</h1>
+    </div>
 
-<div class="container-fluid p-5">  
-  <div  *ngIf="notes">
-    <h2  class="display-2 text-center mt-5" >{{notes}}</h2>  
+    <div class="back-button-wrapper">
+      <button class="yellow-button-container yellow-button standard-button-width" (click)="toAnalytics()">
+        Go to mach list page
+      </button>
+    </div>
+
+    <mat-error *ngIf="networkingErr">
+      Something went wrong please try again
+    </mat-error>
+
+    <!--          <div class="container-fluid p-5">-->
+    <!--            <div *ngIf="notes">-->
+    <!--              <h2 class="display-2 text-center mt-5">{{notes}}</h2>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!---->
+
+    <mat-error *ngIf="networkingErr">
+      Something went wrong please try again
+    </mat-error>
+
+    <div class="profile-tabs-wrapper">
+      <div class="profile-tabs">
+        <span (click)="profileTab = true" [ngClass]="profileTab ? 'active' : ''">Personal data</span>
+        <span (click)="profileTab = false" [ngClass]="profileTab ? '' : 'active'">Current Tariff plan</span>
+        <div class="profile-underline-wrapper">
+          <div [ngClass]="profileTab ? 'left' : 'right'" class="profile-underline"></div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-card" *ngIf="profileTab">
+      <form>
+        <div class="profile-info-block">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="general-input" [value]="profile.userName" disabled>
+          </div>
+
+          <div class="form-group">
+            <label>Gender</label>
+            <input type="text" class="general-input" [value]="profile.gender" disabled>
+          </div>
+
+          <div class="form-group">
+            <label>Choose your birth date</label>
+            <input class="general-input mat-custom-input" placeholder="Choose your birth date" [value]="profile.birthDate | date" disabled>
+          </div>
+
+          <div class="form-group">
+            <label>Time zone</label>
+            <input type="text" class="general-input" [value]="profile.timeZone" disabled>
+            <p class="current-zone">{{ timenow }}</p>
+          </div>
+        </div>
+
+        <div class="profile-avatar-block">
+          <div class="avatar-wrapper">
+            <div class="avatar-placeholder">
+              <img [src]="imagePreview" *ngIf="imageUploaded" alt=" ">
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-submit-block">
+          <button class="yellow-button-container yellow-button standard-button-width" (click)="update()">UPDATE Profile</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="profile-plan-card-wrapper" *ngIf="!profileTab">
+      <div class="price-card">
+        <div class="price-card-header">
+          <p>{{ tariffPlan.name }}</p>
+        </div>
+        <div class="price-card-content">
+          <div class="card-info-block">
+            <span class="card-icon">
+              <img src="assets/img/icons/debit_card.svg" alt=" ">
+            </span>
+            <div class="card-data">
+              <span class="card-info-block-title price-title">Price:</span>
+              <span class="card-info-price">€ 45</span>
+            </div>
+          </div>
+          <div class="card-info-divider"></div>
+          <div class="card-info-block">
+            <span class="card-icon">
+              <img src="assets/img/icons/paper.svg" alt=" ">
+            </span>
+            <div class="card-data">
+              <span class="card-info-block-title">Description:</span>
+              <span class="card-info-block-content">Lorem ipsum dolor, set imet</span>
+            </div>
+          </div>
+          <div class="card-info-divider"></div>
+          <div class="card-info-block">
+            <span class="card-icon">
+              <img src="assets/img/icons/molecule.svg" alt=" ">
+            </span>
+            <div class="card-data">
+              <span class="card-info-block-title">Benefits:</span>
+              <span class="card-info-block-content">Lorem ipsum dolor, set imet</span>
+              <span class="card-info-block-content">Lorem ipsum dolor, set imet</span>
+            </div>
+          </div>
+
+          <div class="price-card-button">
+            <a class="yellow-button yellow-button-container" href="#" (click)="ontariff()">Update Tariff Plan</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<div class="col-md-12">
-  <section id="cart">
-    <div class="container-fluid p-5">  
-      
-        <h3  class="display-2 text-center mt-5" ><a (click)="toAnalytics()"> GO TO ANALYTICS PAGE</a></h3>   
-        
-        <button class="btn btn-warning btn-block"><a (click)="toAnalytics()"> GO TO ANALYTICS</a></button>
-    
-    </div>
-  </section>
-</div>
-<mat-card class="example-card">
-  <h3>{{timenow}}</h3>
-  <mat-card-header>
-      
-      
-    <img  *ngIf="profile.imageSrc!==''" mat-card-avatar class="example-header-image" [src]="'http://localhost:4000/' + profile.imageSrc">
-    <mat-card-subtitle> Your name: <h4>{{profile.userName}}</h4></mat-card-subtitle>
-    <mat-card-subtitle>Your Time Zone:  
-      <h4>{{profile.timeZone}} 
-        <button  mat-raised-button color="accent" (click)="update()">UPDATE Time Zone </button> 
-      </h4>      
-    </mat-card-subtitle>
-    
-  </mat-card-header>
-  
-  <mat-card-content>
-    <p>
-      Date of birth:  {{profile.birthDate | date}}
-    </p>
-    <p>
-      Gender:  {{profile.gender}}
-    </p>
-  </mat-card-content>
-  <mat-card-content>
-    <h1>
-      Your tariff plan: {{tariffPlan.name}}
-      <button  mat-raised-button color="accent" (click)="ontariff()">UPDATE Tariff</button> 
-    </h1>
-    <h3>
-      Descriptions: {{tariffPlan.description}}
-    </h3>
-    <h4>Benefits</h4>
-    <p *ngFor="let benefit of tariffPlan.benefits">
-      {{benefit}}
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button  mat-raised-button color="accent" (click)="update()">UPDATE Profile</button>    
-  </mat-card-actions>
-</mat-card>
+<app-footer></app-footer>

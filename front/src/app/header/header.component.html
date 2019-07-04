@@ -76,11 +76,9 @@
         </div>
         <div>
           <button class="yellow-button-container yellow-button navbar-button sign-in-btn" (click)="openSignIn()"
-                  *ngIf="!authService.isAuthenticated()">Sign In</button>
-          <button class="secondary-button-container secondary-button navbar-button" (click)="openApp()"
-                  *ngIf="authService.isAuthenticated()">Matches</button>
+                  >Sign In</button>
           <button class="secondary-button-container secondary-button navbar-button" (click)="openSignUp()"
-                  *ngIf="!authService.isAuthenticated()">Sign Up</button>
+                  >Sign Up</button>
         </div>
         <div class="lang-dropdown-wrapper flex space-between lang-icons" (click)="langDrop = !langDrop">
           <span class="bold-text" translate>{{ 'langCode' | translate }}</span>

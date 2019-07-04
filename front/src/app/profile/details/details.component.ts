@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Profile } from '../../shared/models/profile.model';
-import { ProfileServiceService } from 'src/app/shared/profile-service.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { TariffService } from 'src/app/shared/tariff.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ProfileServiceService} from 'src/app/shared/profile-service.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {TariffService} from 'src/app/shared/tariff.service';
 import * as moment from 'moment-timezone';
 
 
@@ -15,23 +14,26 @@ import * as moment from 'moment-timezone';
 export class DetailsComponent implements OnInit, OnDestroy {
 
   constructor(private profileService: ProfileServiceService,
-    private tariffService: TariffService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+              private tariffService: TariffService,
+              private route: ActivatedRoute,
+              private router: Router) {
+  }
+
   profile = {};
   private subscription: Subscription;
-  userid = "";
+  userid = '';
   tariffPlan = {};
   timenow;
   networkingErr = false;
-  notes = "";
+  notes = '';
+  profileTab = true;
 
 
   ngOnInit() {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.userid = params['id'];
+          this.userid = params.id;
           this.fetch(this.userid);
 
         }
@@ -39,11 +41,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.route.queryParams
       .subscribe(
         (params: Params) => {
-          if (params['success']) {
-            this.notes = "Perchase successfull"
+          if (params.success) {
+            this.notes = 'Purchase successful';
 
-          } else if (params['wrong']) {
-            this.notes = "Something goes wrong!!! Try again"
+          } else if (params.wrong) {
+            this.notes = 'Something goes wrong, please, try again';
 
           }
         }
@@ -53,39 +55,39 @@ export class DetailsComponent implements OnInit, OnDestroy {
   fetch(userid: string) {
     this.subscription = this.profileService.getProfile(userid)
       .subscribe(profile => {
-        this.timenow = moment.tz(new Date(), profile.timeZone);
-        this.profile = profile,
-
-          this.getTariff(profile.tariffPlan)
-      },
+          this.timenow = moment.tz(new Date(), profile.timeZone);
+          this.profile = profile;
+          this.getTariff(profile.tariffPlan);
+        },
         err => {
           this.networkingErr = true;
-
-        })
+        });
 
   }
 
   getTariff(tariffid: string) {
     this.subscription = this.tariffService.getTariff(tariffid)
       .subscribe(tariff => {
-        this.tariffPlan = tariff;
-      },
+          this.tariffPlan = tariff;
+        },
         err => {
           this.networkingErr = true;
-
-        })
+        });
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
   update() {
-    this.router.navigate([`/profile/edit/${this.userid}`])
+    this.router.navigate([`/profile/edit/${this.userid}`]);
   }
+
   ontariff() {
-    this.router.navigate([`/tariff/${this.userid}`])
+    this.router.navigate([`/tariff/${this.userid}`]);
   }
+
   toAnalytics() {
-    this.router.navigate([`/main/${this.userid}`])
+    this.router.navigate([`/main/${this.userid}`]);
   }
 }
