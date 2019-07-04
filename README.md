@@ -7,10 +7,10 @@ $ npm -v
 
 Your app has two folders back and front/front, It has 2 package.json. You need to install dependencies separately
 First of all you need to install
-- node.js I used v8.10.0
+- node.js    I used v8.10.0
 - mongoDB    I used MongoDB Server version,db version v3.6.3 and MongoDB shell version v3.6.3
-- you can also install compass to check your base work https://www.mongodb.com/download-center/compass?jmp=docs
-- Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+- You can also install compass to check your base work https://www.mongodb.com/download-center/compass?jmp=docs
+- Angular CLI (https://github.com/angular/angular-cli) version 7.3.1.
 
 #Backend
 
@@ -20,8 +20,8 @@ First of all you need to install
 4. create in root of folder back .env file and enter your existing gmail and  your pass from this email
 You need this to test how email confirmation works
 example 
-USER_NAME = nata.top@gmail.com
-PASSWORD = 07589
+USER_NAME = test@gmail.com
+PASSWORD = 123456
 4.  For correct work check this your gmail  Let less secure apps access your account
 https://support.google.com/accounts/answer/6010255?hl=en
 
@@ -33,7 +33,7 @@ pass 10latapu
 
 for stripe you can use test card number 4242 4242 4242 4242
 
-7. Also, add tariff plans to the base you can do it wia posment
+7. Also, add tariff plans to the base you can do it wia postment
 http://API_URL/matches/tariff/create
 
 8.  npm run dev
