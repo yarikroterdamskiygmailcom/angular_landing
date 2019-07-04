@@ -2,14 +2,10 @@
 <mat-error *ngIf="networkingErr">
   Something went wrong please try again
 </mat-error>
-<div class="col-md-12">
-  <section id="cart">
-    <div class="container-fluid p-5">  
-      
-        <h3  class="display-2 text-center mt-5" >Confirm please</h3>   
-        
-        <button class="btn btn-warning btn-block"><a (click)="confirm()">Confirm</a></button>
-    
-    </div>
-  </section>
+<div class="auth-card">
+  <h3>Confirm please</h3>
+  <div>
+    <button class="yellow-button-container yellow-button standard-button-width" (click)="confirm()">Confirm</button>
+  </div>
 </div>
+
