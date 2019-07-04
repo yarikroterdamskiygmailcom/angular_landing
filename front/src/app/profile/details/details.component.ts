@@ -4,6 +4,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {TariffService} from 'src/app/shared/tariff.service';
 import * as moment from 'moment-timezone';
+import {SignUpService} from "../../shared/sign-up.service";
 
 
 @Component({
@@ -16,7 +17,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(private profileService: ProfileServiceService,
               private tariffService: TariffService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private signUpService: SignUpService) {
   }
 
   profile = {};
@@ -30,6 +32,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    this.signUpService.setEvent({activeTab: 1});
     this.route.params
       .subscribe(
         (params: Params) => {

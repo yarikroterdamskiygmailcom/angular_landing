@@ -5,6 +5,7 @@ import {ProfileServiceService} from 'src/app/shared/profile-service.service';
 import {Subscription} from 'rxjs';
 import {Profile} from '../../shared/models/profile.model';
 import * as moment from 'moment-timezone';
+import {SignUpService} from "../../shared/sign-up.service";
 
 
 @Component({
@@ -17,11 +18,10 @@ export class UpdateProfileComponent implements OnInit {
   constructor(private profileService: ProfileServiceService,
               private route: ActivatedRoute,
               private router: Router,
-              private fb: FormBuilder
-  ) {
-  }
+              private fb: FormBuilder,
+              private signUpService: SignUpService) {}
 
-  form: FormGroup;
+  form;
   private subscription: Subscription;
   profile;
   profileId = '';
@@ -39,6 +39,7 @@ export class UpdateProfileComponent implements OnInit {
   updatedProfile;
 
   ngOnInit() {
+    this.signUpService.setEvent({activeTab: 1});
     this.getTimeZones();
     this.route.params
       .subscribe(
@@ -53,26 +54,10 @@ export class UpdateProfileComponent implements OnInit {
     this.form = this.fb.group({
       name: [null, [Validators.required, Validators.minLength(3)]],
       timezone: [null, [Validators.required]],
-      imagePath: ['', [Validators.required]],
+      imagePath: [''],
       gender: [null, [Validators.required, Validators.minLength(4)]],
       birthDate: ['']
     });
-    // this.form = new FormGroup({
-    //   'name': new FormControl(null, [
-    //     Validators.required,
-    //     Validators.minLength(3)
-    //   ]),
-    //   'timezone': new FormControl(null, [
-    //     Validators.required
-    //   ]),
-    //   'imagePath': new FormControl('', []),
-    //   'gender': new FormControl(null, [
-    //     Validators.required,
-    //     Validators.minLength(4)
-    //   ]),
-    //   'birthDate': new FormControl('', [])
-    //
-    // });
   }
 
   fetch(userid: string) {

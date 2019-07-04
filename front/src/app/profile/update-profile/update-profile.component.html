@@ -64,7 +64,7 @@
             <input type="file" id="imagePath" formControlName="imagePath"
                    #input (change)="onfileUpload($event)" class="hidden">
             <div class="avatar-placeholder">
-              <img [src]="imagePreview" *ngIf="imageUploaded" alt=" ">
+              <img [src]="imagePreview" *ngIf="imageUploaded" alt="no image">
             </div>
             <p class="load-avatar-button" (click)="triggerClick()">Load the image</p>
           </div>
@@ -73,7 +73,7 @@
 
 
         <div class="profile-submit-block">
-          <button class="yellow-button-container yellow-button standard-button-width" type="submit" [disabled]="!form.valid">Save</button>
+          <button class="yellow-button-container yellow-button standard-button-width" type="submit" [disabled]="form.invalid">Save</button>
           <button class="secondary-button-container secondary-button standard-button-width" type="button" (click)="onCancel()">Cancel</button>
         </div>
       </form>

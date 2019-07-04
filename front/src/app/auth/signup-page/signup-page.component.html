@@ -55,12 +55,12 @@
     <div class="have-account">
       <span>
         Already have an account?
-        <a href="#"><b>Sign In</b></a>
+        <a (click)="openSignIn()"><b>Sign In</b></a>
       </span>
     </div>
     <div>
-      <button [disabled]="form.invalid" class="yellow-button yellow-button-container sign-up-button" type="submit">Sign
-        up
+      <button [disabled]="form.invalid" class="yellow-button yellow-button-container sign-up-button" type="submit">
+        Sign up
       </button>
     </div>
   </form>

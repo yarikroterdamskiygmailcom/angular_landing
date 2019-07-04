@@ -353,6 +353,16 @@ a.active {
   margin: 0 33px;
 }
 
+.hidden-block {
+  position: relative !important;
+  z-index: -1 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  max-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 #mobile-app-menu-wrapper {
   display: none;
 }

@@ -7,17 +7,20 @@
       </a>
     </div>
     <div class="app-navbar-links">
-      <a [routerLink]="['/profile', userId]" *ngIf="authService.isAuthenticated()">Profile</a>
-      <a [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Profile</a>
+      <a [ngClass]="activeTab === 1 ? 'active' : ''" [routerLink]="['/profile', userId]" *ngIf="authService.isAuthenticated()">Profile</a>
+      <a [ngClass]="activeTab === 1 ? 'active' : ''" [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Profile</a>
 
-      <a [routerLink]="['/main', userId]" *ngIf="authService.isAuthenticated()">Match list</a>
-      <a [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Match list</a>
+      <a [ngClass]="activeTab === 2 ? 'active' : ''" [routerLink]="['/main', userId]" *ngIf="authService.isAuthenticated()">Match list</a>
+      <a [ngClass]="activeTab === 2 ? 'active' : ''" [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Match list</a>
 
-      <a [routerLink]="['/tariff', userId]" *ngIf="authService.isAuthenticated()">Tariff Plans</a>
-      <a [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Tariff Plan</a>
+      <a [ngClass]="activeTab === 3 ? 'active' : ''" [routerLink]="['/tariff', userId]" *ngIf="authService.isAuthenticated()">Tariff Plans</a>
+      <a [ngClass]="activeTab === 3 ? 'active' : ''" [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Tariff Plan</a>
     </div>
     <div class="flex jcc">
-      <a class="secondary-button-container secondary-reversed logout" (click)="onLogout($event)">Logout</a>
+      <a class="secondary-button-container secondary-reversed logout" (click)="onLogout($event)"
+         [ngClass]="!authService.isAuthenticated() ? 'hidden-block' : ''">
+        Logout
+      </a>
     </div>
   </div>
 </nav>
@@ -39,8 +42,10 @@
         <li><a href="#">Profile</a></li>
         <li><a href="#">Match list</a></li>
         <li><a href="#">Tariff Plans</a></li>
-        <li class="logout-in-menu">
-          <a class="secondary-button-container secondary-reversed logout" href="#">Logout</a>
+        <li class="logout-in-menu" [ngClass]="!authService.isAuthenticated() ? 'hidden-block' : ''">
+          <a class="secondary-button-container secondary-reversed logout" (click)="onLogout($event)">
+            Logout
+          </a>
         </li>
         <li class="mobile-lang">
           <div class="lang-dropdown-wrapper app-lang-icons lang-icons" (click)="langDrop = !langDrop">

@@ -4,6 +4,7 @@ import {TariffService} from '../shared/tariff.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProfileServiceService} from '../shared/profile-service.service';
+import {SignUpService} from "../shared/sign-up.service";
 
 
 @Component({
@@ -21,9 +22,11 @@ export class TariffComponent implements OnInit, OnDestroy {
   constructor(private tariffService: TariffService,
               private profileService: ProfileServiceService,
               private route: ActivatedRoute,
-              private router: Router) {}
+              private router: Router,
+              private signUpService: SignUpService) {}
 
   ngOnInit() {
+    this.signUpService.setEvent({activeTab: 3});
     this.route.params
       .subscribe((params: Params) => {
           this.userId = params.id;

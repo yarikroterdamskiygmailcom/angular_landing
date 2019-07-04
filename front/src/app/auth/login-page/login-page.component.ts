@@ -108,7 +108,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.authService.postResend(data)
       .subscribe(
         () => {
-          // this.router.navigate([`/login`])
           this.notes = 'Has been sent to your email';
         },
         err => {
@@ -147,6 +146,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   closeSignUp() {
     this.signUpService.setEvent({signUp: false, signIn: false, top: 0});
+  }
+
+  openSignUp(): void {
+    this.signUpService.setEvent({signUp: true, signIn: false, top: '450px'});
   }
 
   getUserTimeZone(data: string) {

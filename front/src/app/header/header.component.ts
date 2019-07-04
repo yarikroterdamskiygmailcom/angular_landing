@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, AfterViewChecked} from '@angular/core';
 import {AuthService} from '../shared/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProfileServiceService} from '../shared/profile-service.service';
@@ -10,7 +10,7 @@ import {SignUpService} from '../shared/sign-up.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewChecked {
   profileId = '';
   menuIsOpen = false;
   appMenuOpen = false;
@@ -19,14 +19,20 @@ export class HeaderComponent implements OnInit {
   signInOpen = false;
   langDrop = false;
   emailSend = false;
+  activeTab;
   userId;
 
   constructor(private authService: AuthService,
               private profileService: ProfileServiceService,
               private router: Router,
               private translateService: TranslateService,
-              private signUpService: SignUpService) {
+              private signUpService: SignUpService,
+              private cdr: ChangeDetectorRef) {
     translateService.setDefaultLang('en');
+  }
+
+  ngAfterViewChecked(): void {
+    this.cdr.detectChanges();
   }
 
   ngOnInit() {
@@ -36,6 +42,10 @@ export class HeaderComponent implements OnInit {
     });
 
     this.signUpService.getEvent().subscribe((res) => {
+      if (res.activeTab) {
+        this.activeTab = res.activeTab;
+      }
+
       if (res.userId) {
         this.userId = res.userId;
       }

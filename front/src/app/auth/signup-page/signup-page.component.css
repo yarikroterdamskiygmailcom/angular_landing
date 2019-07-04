@@ -45,7 +45,6 @@
   margin-top: 18px;
   padding-left: 2px;
   font-style: normal;
-  font-weight: normal;
   font-size: 14px;
   line-height: 19px;
   color: #444444;
@@ -54,7 +53,9 @@
 .have-account a {
   padding-left: 8px;
   text-decoration: none;
+  font-weight: bold;
   color: #444444 !important;
+  cursor: pointer;
 }
 
 .sign-up-button {

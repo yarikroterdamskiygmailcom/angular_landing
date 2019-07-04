@@ -44,11 +44,6 @@ export class SignupPageComponent implements OnInit, OnDestroy {
       .subscribe(() => {
           this.email = this.form.value.email;
           this.confirmationVisible = true;
-          // this.router.navigate(['/login'], {
-          //   queryParams: {
-          //     registered: true
-          //   }
-          // });
         },
         err => {
           this.networkingErr = true;
@@ -58,6 +53,10 @@ export class SignupPageComponent implements OnInit, OnDestroy {
 
   closeSignUp() {
     this.signUpService.setEvent({signUp: false, signIn: false, top: 0});
+  }
+
+  openSignIn(): void {
+    this.signUpService.setEvent({signUp: false, signIn: true, top: '450px'});
   }
 
   checkConfirmOpen(bool) {

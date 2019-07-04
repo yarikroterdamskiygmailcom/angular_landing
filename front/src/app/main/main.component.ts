@@ -7,9 +7,8 @@ import {MainService} from '../shared/main.service';
 import {TariffService} from '../shared/tariff.service';
 import {FilterPipe} from '../shared/datepipe';
 import {MatTableDataSource, MatPaginator} from '@angular/material';
-import {SignUpService} from "../shared/sign-up.service";
+import {SignUpService} from '../shared/sign-up.service';
 
-//
 interface PeriodicElement {
   name: string;
   position: number;
@@ -52,13 +51,14 @@ export class MainComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit() {
+    this.signUpService.setEvent({activeTab: 2});
     this.route.params
       .subscribe(
         (params: Params) => {
           this.userid = params.id;
           this.fetch(this.userid);
           this.signUpService.setEvent({userId: this.userid});
-          // this.getMatches("2019-05-19")
+          // this.getMatches('2019-05-19')
         }
       );
   }
