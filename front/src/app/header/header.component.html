@@ -2,7 +2,7 @@
 <nav id="app-navbar" *ngIf="!landing">
   <div class="app-navbar-wrapper">
     <div>
-      <a routerLink="" class="logo">
+      <a routerLink="/" class="logo">
         <img src="assets/img/logo_white.svg" alt="">
       </a>
     </div>
@@ -66,7 +66,6 @@
     </div>
   </div>
 </nav>
-
 
 <!-- LANDING NAVBAR -->
 <nav id="landing-menu-wrapper" *ngIf="landing">
@@ -136,7 +135,7 @@
         <div class="lang-dropdown-wrapper flex space-between lang-icons mobile-lang" (click)="langDrop = !langDrop">
           <span class="bold-text" translate>{{ 'langCode' | translate }}</span>
           <span class="icon ml-10">
-            <img src="assets/img/icons/arrow_down.svg" alt="">
+            <img src="assets/img/icons/arrow_down.svg" alt=" ">
           </span>
         </div>
       </li>
@@ -149,7 +148,6 @@
     </ul>
   </div>
 </nav>
-
 
 <div class="sign-up-close" *ngIf="signUpOpen || signInOpen" (click)="closeSignUp()"></div>
 <div [ngClass]="signUpOpen ? '' : 'hidden'">

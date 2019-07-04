@@ -16,7 +16,6 @@
   color: #7A7A7A !important;
 }
 
-
 .page-title {
   position: absolute;
   top: 90px;
@@ -128,7 +127,6 @@
   width: 70%;
 }
 
-
 .profile-tabs > span {
   padding: 0 22px 0 20px;
   font-style: normal;
@@ -195,9 +193,7 @@ span.active {
   margin-top: 15px;
 }
 
-
 /* PLAN CARD */
-
 
 .price-card {
   width: 28.5%;
@@ -238,7 +234,6 @@ span.active {
   width: 100%;
   padding: 59px 65px 70px 70px;
 }
-
 
 .price-card-button {
   width: calc(100% - 6px);
@@ -328,8 +323,48 @@ span.active {
   padding-top: 10px;
 }
 
+.purchase-success {
+  position: absolute;
+  left: 24px;
+  background: #FCFCFC;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(53, 35, 109, 0.08);
+  border-radius: 5px;
+  max-width: 315px;
+  width: 100%;
+  top: 300px;
+  padding: 20px 90px 70px 24px;
+}
+
+.purchase-success > span {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #444444;
+}
+
+.purchase-success > button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #35236D;
+  background: transparent;
+  border: none;
+}
 
 /* PLAN CARD END */
+
+@media screen and (max-width: 1100px) {
+  .purchase-success {
+    right: 24px;
+    left: unset;
+    top: 120px;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .page-title {
@@ -360,6 +395,11 @@ span.active {
     padding-top: 50px;
     width: 100%;
     justify-content: center;
+  }
+
+  .purchase-success {
+    top: unset;
+    bottom: 30px;
   }
 }
 

@@ -5,7 +5,7 @@ import {ProfileServiceService} from 'src/app/shared/profile-service.service';
 import {Subscription} from 'rxjs';
 import {Profile} from '../../shared/models/profile.model';
 import * as moment from 'moment-timezone';
-import {SignUpService} from "../../shared/sign-up.service";
+import {SignUpService} from '../../shared/sign-up.service';
 
 
 @Component({

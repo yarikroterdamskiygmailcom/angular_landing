@@ -4,7 +4,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {TariffService} from 'src/app/shared/tariff.service';
 import * as moment from 'moment-timezone';
-import {SignUpService} from "../../shared/sign-up.service";
+import {SignUpService} from '../../shared/sign-up.service';
 
 
 @Component({
@@ -29,6 +29,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   networkingErr = false;
   notes = '';
   profileTab = true;
+  updatedPlan = false;
 
 
   ngOnInit() {
@@ -38,7 +39,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
         (params: Params) => {
           this.userid = params.id;
           this.fetch(this.userid);
-
         }
       );
     this.route.queryParams
@@ -46,13 +46,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
         (params: Params) => {
           if (params.success) {
             this.notes = 'Purchase successful';
-
           } else if (params.wrong) {
             this.notes = 'Something goes wrong, please, try again';
-
           }
         }
       );
+    if (this.route.snapshot.queryParams.success) {
+      this.updatedPlan = true;
+      this.profileTab = false;
+    }
   }
 
   fetch(userid: string) {

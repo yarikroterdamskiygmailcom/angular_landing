@@ -4,6 +4,11 @@
       <h1>Profile page</h1>
     </div>
 
+    <div class="purchase-success" *ngIf="updatedPlan">
+      <span>Purchase successful!</span>
+      <button (click)="updatedPlan = false">OK</button>
+    </div>
+
     <div class="back-button-wrapper">
       <button class="yellow-button-container yellow-button standard-button-width" (click)="toAnalytics()">
         Go to mach list page

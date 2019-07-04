@@ -4,7 +4,7 @@ import {TariffService} from '../shared/tariff.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProfileServiceService} from '../shared/profile-service.service';
-import {SignUpService} from "../shared/sign-up.service";
+import {SignUpService} from '../shared/sign-up.service';
 
 
 @Component({
