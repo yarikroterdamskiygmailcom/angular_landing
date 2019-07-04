@@ -35,7 +35,6 @@ export class TariffComponent implements OnInit, OnDestroy {
   getAll() {
     this.subscription = this.tariffService.getAll()
       .subscribe(tariffs => {
-        console.log(tariffs);
           this.tariffs = tariffs;
         },
         (err) => {

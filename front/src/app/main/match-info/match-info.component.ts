@@ -35,8 +35,6 @@ export class MatchInfoComponent implements OnInit {
           this.userid = params.id;
           this.matchid = params.matchid;
 
-          console.log(this.userid);
-          console.log(this.matchid);
           this.getMatch(this.matchid);
           this.fetch(this.userid);
         }
@@ -59,14 +57,10 @@ export class MatchInfoComponent implements OnInit {
     this.mainService.getMatch(id)
       .subscribe(match => {
           this.matchInfo = match;
-          console.log(this.timeZone);
           this.matchTime = moment.tz(this.matchInfo.data.match_data.event_play_timestamp, this.timeZone);
           const id = this.matchInfo.data.match_data.players.indexOf('-');
-          console.log('-----', id);
           this.firstPlayer = this.matchInfo.data.match_data.players.substring(0, id);
-          console.log('FIRST', this.firstPlayer);
           this.secondPlayer = this.matchInfo.data.match_data.players.substring(id + 1);
-          console.log('SECOND', this.secondPlayer);
         },
         err => {
           this.networkingErr = true;

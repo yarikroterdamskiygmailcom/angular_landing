@@ -56,17 +56,17 @@ table {
   border-spacing: 0;
 }
 
-body::-webkit-scrollbar {
-  width: 0;
-}
+/*body::-webkit-scrollbar {*/
+/*  width: 0;*/
+/*}*/
 
-body::-webkit-scrollbar-track {
-  width: 0;
-}
+/*body::-webkit-scrollbar-track {*/
+/*  width: 0;*/
+/*}*/
 
-body::-webkit-scrollbar-thumb {
-  width: 0;
-}
+/*body::-webkit-scrollbar-thumb {*/
+/*  width: 0;*/
+/*}*/
 
 .body-bg{
   min-height: 100vh;

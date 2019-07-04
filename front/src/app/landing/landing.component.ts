@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {SignUpService} from "../shared/sign-up.service";
+import {FormBuilder, Validators} from '@angular/forms';
+import {SignUpService} from '../shared/sign-up.service';
+import {TariffService} from '../shared/tariff.service';
 
 @Component({
   selector: 'app-landing',
@@ -9,60 +10,23 @@ import {SignUpService} from "../shared/sign-up.service";
 })
 export class LandingComponent implements OnInit {
   faqContent = [];
-  plansContent = [
-    {
-      duration: 'Yearly',
-      price: 67,
-      durationShort: 'yr',
-      advantage: [
-        'Lorem ipsum',
-        'Lorem ipsum',
-        'Lorem ipsum'
-      ]
-    },
-    {
-      duration: 'Monthly',
-      price: 10,
-      durationShort: 'mo',
-      advantage: [
-        'Lorem ipsum',
-        'Lorem ipsum',
-        'Lorem ipsum'
-      ]
-    },
-    {
-      duration: 'Six Month',
-      price: 45,
-      durationShort: '6mo',
-      advantage: [
-        'Lorem ipsum',
-        'Lorem ipsum',
-        'Lorem ipsum'
-      ]
-    },
-    {
-      duration: 'Three Month',
-      price: 45,
-      durationShort: '3mo',
-      advantage: [
-        'Lorem ipsum',
-        'Lorem ipsum',
-        'Lorem ipsum'
-      ]
-    },
-  ];
+  plansContent = [];
   contactUs;
   signUpOpen = false;
   now;
 
   constructor(private fb: FormBuilder,
-              private signUpService: SignUpService) {
+              private signUpService: SignUpService,
+              private tariffService: TariffService) {
     this.now = new Date();
   }
 
   ngOnInit() {
     this.fillContent();
     this.initContactUsForm();
+    this.tariffService.getAll().subscribe((plans) => {
+      this.plansContent = plans;
+    });
   }
 
   initContactUsForm() {
@@ -88,7 +52,7 @@ export class LandingComponent implements OnInit {
 
   openModal(e) {
     e.preventDefault();
-    this.signUpService.setEvent({signUp: true, top: '250px'});
+    this.signUpService.setEvent({signUp: true, top: '450px'});
     window.scrollTo({
       top: 90,
       behavior: 'smooth'

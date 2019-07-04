@@ -48,7 +48,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     if (this.authService.isAuthenticated() && potencialRemember !== null && potencialid !== null) {
       this.getUserTimeZone(potencialid);
-      console.log(localStorage.getItem('timezone'));
       this.router.navigate([`/profile/${potencialid}`]);
     }
     this.otherForm = new FormGroup({
@@ -62,16 +61,15 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       password: ['', [Validators.required, Validators.minLength(6)]],
       remember: [false]
     });
-    console.log(this.form);
     this.route.queryParams
       .subscribe(
         (params: Params) => {
-          if (params['registered']) {
-            this.notes = "Thanks Check your email and activate your acount!!!"
+          if (params.registered) {
+            this.notes = 'Thanks check Your email and activate your account!';
 
-          } else if (params['accessDenied']) {
+          } else if (params.accessDenied) {
 
-          } else if (params['sessionFailed']) {
+          } else if (params.sessionFailed) {
 
           }
         }
@@ -86,11 +84,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.aSup = this.authService.login(this.form.value)
       .subscribe(
         data => {
-          if (this.remember) {
-            console.log("ZZZ");
+          if (this.form.value.remember) {
             localStorage.setItem('remember', 'remember');
             localStorage.setItem('userid', data.id);
-            console.log(localStorage.getItem('timezone'));
           }
           this.closeSignUp();
           this.getUserTimeZone(data.id);
@@ -129,7 +125,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   onSend() {
-    console.log(this.otherForm.value.email);
     const data = {
       email: this.otherForm.value.email
     };
@@ -148,11 +143,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   enterMail() {
     this.passforgot = true;
-  }
-
-  checked() {
-    this.remember = true;
-    console.log(this.remember);
   }
 
   closeSignUp() {

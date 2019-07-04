@@ -38,7 +38,7 @@
              </span>
     </div>
     <div class="form-group-checkbox mt-25">
-      <a class="terms-and-conditions" href="#">Terms and Conditions</a>
+      <a class="terms-and-conditions" [routerLink]="['/terms']" (click)="closeSignUp()">Terms and Conditions</a>
       <label class="label-container" for="defaultUnchecked">
         I am already 18 years old
         <input type="checkbox" class="custom-control-input" id="defaultUnchecked" formControlName="limits">
@@ -47,7 +47,7 @@
     </div>
     <div class="form-group-checkbox">
       <label class="label-container" for="privacyCheckbox">
-        <a href="#">I agree to the privacy policy</a>
+        <a [routerLink]="['/privacy']" (click)="closeSignUp()">I agree to the privacy policy</a>
         <input type="checkbox" class="custom-control-input" id="privacyCheckbox" formControlName="privacy">
         <span class="checkmark"></span>
       </label>

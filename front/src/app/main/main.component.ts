@@ -8,6 +8,7 @@ import {TariffService} from '../shared/tariff.service';
 import {FilterPipe} from '../shared/datepipe';
 import {MatTableDataSource, MatPaginator} from '@angular/material';
 import {SignUpService} from "../shared/sign-up.service";
+
 //
 interface PeriodicElement {
   name: string;
@@ -63,21 +64,16 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   fetch(userid: string) {
-    console.log(userid);
     this.subscription = this.profileService.getProfile(userid)
       .subscribe(profile => {
-         this.timenow = moment.tz(new Date(), profile.timeZone);
-         console.log(profile);
+          this.timenow = moment.tz(new Date(), profile.timeZone);
           this.timeZone = profile.timeZone;
-          console.log('Zone', this.timeZone);
           this.profile = profile;
           this.getMatches('2019-05-19');
-
           this.tariffService.getTariff(profile.tariffPlan)
             .subscribe(
               (tariff) => {
                 this.tariffPlanName = tariff.name;
-                console.log('Name1', this.tariffPlanName);
               }
             );
         },
@@ -106,7 +102,6 @@ export class MainComponent implements OnInit, OnDestroy {
             const limitations = (matches.data.length * 0.10).toFixed();
             const limitedMatches = matches.data.slice(0, Number(limitations));
             this.events = limitedMatches;
-            console.log(2, this.timeZone);
             for (let i = 0; i < this.events.length; i++) {
               const date = new Date(this.events[i].event_play_time * 1000);
               this.events[i].event_play_time = moment.tz(date, this.timeZone);
@@ -116,14 +111,11 @@ export class MainComponent implements OnInit, OnDestroy {
           }
           this.dataSource = new MatTableDataSource<PeriodicElement>(this.events);
           this.dataSource.paginator = this.paginator;
-          console.log(this.dataSource);
-          console.log('limited2', this.events);
           this.spinner = false;
         },
         err => {
           this.networkingErr = true;
-        });
-
+        }
+      );
   }
-
 }

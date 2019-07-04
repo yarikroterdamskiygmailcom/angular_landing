@@ -403,4 +403,18 @@ a.active {
     align-items: center;
     padding: 17px 0 34px 0;
   }
+
+  .mobile-lang{
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 0 20px 0 !important;
+  }
+
+  .lang-icons{
+    padding-left: 0;
+  }
+
+  .dropdown-lang{
+    padding: 10px 0;
+  }
 }

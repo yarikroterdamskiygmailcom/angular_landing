@@ -67,20 +67,20 @@
         <div class="row price-cards-wrapper">
           <div *ngFor="let plan of plansContent" class="price-card">
             <div class="price-card-header">
-              <p>{{ plan.duration }}</p>
+              <p>{{ plan.name }}</p>
             </div>
             <div class="price-card-content">
               <div class="price-card-price">
                 <p>
                   <span class="card-price-currency">€</span>
                   <span class="card-price-value">{{ plan.price }}</span>
-                  <span class="card-price-duration">/{{ plan.durationShort }}</span>
+                  <span class="card-price-duration">/{{ plan.currency }}</span>
                 </p>
               </div>
               <div class="price-card-advantage">
                 <ul>
-                  <li *ngFor="let advantage of plan.advantage">
-                    <span>{{ advantage }}</span>
+                  <li *ngFor="let benefit of plan.benefits">
+                    <span>{{ benefit }}</span>
                   </li>
                 </ul>
               </div>

@@ -8,26 +8,16 @@
     </div>
     <div class="app-navbar-links">
       <a [routerLink]="['/profile', userId]" *ngIf="authService.isAuthenticated()">Profile</a>
-      <a routerLink="login" *ngIf="!authService.isAuthenticated()">Profile</a>
+      <a [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Profile</a>
 
       <a [routerLink]="['/main', userId]" *ngIf="authService.isAuthenticated()">Match list</a>
-      <a routerLink="login" *ngIf="!authService.isAuthenticated()">Match list</a>
+      <a [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Match list</a>
 
       <a [routerLink]="['/tariff', userId]" *ngIf="authService.isAuthenticated()">Tariff Plans</a>
-      <a routerLink="login" *ngIf="!authService.isAuthenticated()">Tariff Plan</a>
+      <a [routerLink]="['/login']" *ngIf="!authService.isAuthenticated()">Tariff Plan</a>
     </div>
     <div class="flex jcc">
       <a class="secondary-button-container secondary-reversed logout" (click)="onLogout($event)">Logout</a>
-      <div class="lang-dropdown-wrapper app-lang-icons lang-icons" (click)="langDrop = !langDrop">
-        <span class="bold-text text-white" translate>{{ 'langCode' | translate }}</span>
-        <div class="lang-dropdown" *ngIf="langDrop">
-          <span (click)="switchLanguage('en')">{{ 'English' | translate }}</span>
-          <span (click)="switchLanguage('es')">{{ 'Spanish' | translate }}</span>
-        </div>
-        <span class="icon ml-10">
-            <img src="assets/img/icons/arrow_down_white.svg" alt="">
-          </span>
-      </div>
     </div>
   </div>
 </nav>
@@ -49,7 +39,23 @@
         <li><a href="#">Profile</a></li>
         <li><a href="#">Match list</a></li>
         <li><a href="#">Tariff Plans</a></li>
-        <li class="logout-in-menu"><a class="secondary-button-container secondary-reversed logout" href="#">Logout</a>
+        <li class="logout-in-menu">
+          <a class="secondary-button-container secondary-reversed logout" href="#">Logout</a>
+        </li>
+        <li class="mobile-lang">
+          <div class="lang-dropdown-wrapper app-lang-icons lang-icons" (click)="langDrop = !langDrop">
+            <span class="bold-text text-white" translate>{{ 'langCode' | translate }}</span>
+            <span class="icon ml-10">
+            <img src="assets/img/icons/arrow_down_white.svg" alt="">
+          </span>
+          </div>
+        </li>
+
+        <li *ngIf="langDrop" class="dropdown-lang mobile-lang text-white">
+          <span (click)="switchLanguage('en')">{{ 'English' | translate }}</span>
+        </li>
+        <li *ngIf="langDrop" class="dropdown-lang mobile-lang text-white">
+          <span (click)="switchLanguage('es')">{{ 'Spanish' | translate }}</span>
         </li>
       </ul>
     </div>
@@ -67,7 +73,7 @@
         </a>
         <div>
           <ul class="nav-links">
-            <li><a href="#" (click)="scrollTo($event, 'landing-banner')">Home</a></li>
+            <li><a href="#" class="active" (click)="scrollTo($event, 'landing-banner')">Home</a></li>
             <li><a href="#" (click)="scrollTo($event, 'about-service')">About service</a></li>
             <li><a href="#" (click)="scrollTo($event, 'our-service')">Prices</a></li>
             <li><a href="#" (click)="scrollTo($event, 'faq-section')">FAQ</a></li>
@@ -120,6 +126,20 @@
           <button class="yellow-button-container yellow-button" (click)="openSignIn('50%')">Sign In</button>
           <button class="secondary-button secondary-button-container" (click)="openSignUp('50%')">Sign Up</button>
         </div>
+      </li>
+      <li>
+        <div class="lang-dropdown-wrapper flex space-between lang-icons mobile-lang" (click)="langDrop = !langDrop">
+          <span class="bold-text" translate>{{ 'langCode' | translate }}</span>
+          <span class="icon ml-10">
+            <img src="assets/img/icons/arrow_down.svg" alt="">
+          </span>
+        </div>
+      </li>
+      <li *ngIf="langDrop" class="dropdown-lang">
+        <span (click)="switchLanguage('en')">{{ 'English' | translate }}</span>
+      </li>
+      <li *ngIf="langDrop" class="dropdown-lang">
+        <span (click)="switchLanguage('es')">{{ 'Spanish' | translate }}</span>
       </li>
     </ul>
   </div>

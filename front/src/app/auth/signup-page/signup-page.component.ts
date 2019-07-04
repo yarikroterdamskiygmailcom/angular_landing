@@ -52,7 +52,6 @@ export class SignupPageComponent implements OnInit, OnDestroy {
         },
         err => {
           this.networkingErr = true;
-          console.log(err);
         }
       );
   }

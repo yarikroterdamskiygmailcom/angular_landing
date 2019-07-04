@@ -14,7 +14,6 @@ export class CardService {
 
   constructor(private http: HttpClient,
     private router: Router) {
-    console.log(this.router.events)
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.message = '';
@@ -23,14 +22,12 @@ export class CardService {
   }
 
   createCard(card): Observable<{ any }> {
-    console.log('OOOOO', card)
     return this.http.post<{ any }>('/matches/stripe/payment', { card })
       .pipe(
         catchError(this.handleError)
       );
   }
   payViaPaypal(card): Observable<{ any }> {
-    console.log('OOOOO', card)
     return this.http.post<{ any }>('/matches/paypal/payment', { card })
       .pipe(
         catchError(this.handleError)

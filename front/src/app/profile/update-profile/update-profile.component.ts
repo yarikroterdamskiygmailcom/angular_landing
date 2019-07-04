@@ -80,12 +80,9 @@ export class UpdateProfileComponent implements OnInit {
       .subscribe(profile => {
 
         this.profile = profile;
-        console.log(profile.imageSrc);
         this.imagePreview = `/${profile.imageSrc}`;
         this.imageUploaded = true;
-        console.log('UUUUUUU', this.imagePreview);
         this.timenow = moment.tz(new Date(), this.profile.timeZone);
-        console.log(profile.birthDate);
         this.form.setValue({
           name: profile.userName,
           timezone: profile.timeZone,
@@ -93,7 +90,6 @@ export class UpdateProfileComponent implements OnInit {
           gender: profile.gender,
           birthDate: profile.birthDate
         });
-        console.log('!!!!!!!!!!!!!!', this.form.value.birthDate);
       });
   }
 
@@ -102,8 +98,6 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('OK', this.image);
-
     const fd = new FormData();
     if (this.image) {
       fd.append('image', this.image);
@@ -123,13 +117,11 @@ export class UpdateProfileComponent implements OnInit {
         tariffPlan: this.profile.tariffPlan
       };
     }
-    console.log(this.updatedProfile);
     this.profileService.updateProfile(this.profileId, this.updatedProfile)
       .subscribe(
         (profile) => {
           this.profile = profile;
           localStorage.setItem('timezone', this.profile.timeZone);
-          console.log(localStorage.getItem('timezone'));
           this.router.navigate([`/profile/${this.profileId}`]);
         },
         err => {
@@ -149,7 +141,6 @@ export class UpdateProfileComponent implements OnInit {
   onfileUpload(event: any) {
     const file = event.target.files[0];
     this.image = file;
-    console.log(this.image);
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;

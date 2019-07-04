@@ -9,11 +9,11 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class EmailVerificationComponent implements OnInit {
 
-  verifiedToken = "";
-  useremail = "";
+  verifiedToken = '';
+  useremail = '';
   networkingErr = false;
-  message = "";
-  notes = "";
+  message = '';
+  notes = '';
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -25,67 +25,48 @@ export class EmailVerificationComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.useremail = params['email'];
-          console.log(this.useremail)
+          this.useremail = params.email;
 
         }
       );
     this.route.queryParams.subscribe(params => {
-      this.verifiedToken = params['id'];
-      console.log(this.verifiedToken);
-
-    })
+      this.verifiedToken = params.id;
+    });
 
   }
   confirm() {
-    console.log("TOKEN", this.verifiedToken)
-    console.log("MAIL", this.useremail)
-
     const data = {
       token: this.verifiedToken,
       email: this.useremail
-    }
+    };
     this.authService.postConfirm(data)
       .subscribe(
         () => {
-          console.log("Lena")
-          this.router.navigate([`/login`])
+          this.router.navigate([`/login`]);
         },
         err => {
-          console.log(err)
           this.networkingErr = true;
-          this.message = err.message
-
+          this.message = err.message;
         }
-      )
-
+      );
   }
   resend() {
-
-    console.log("MAIL", this.useremail)
-
     const data = {
-
       email: this.useremail
-    }
+    };
     this.authService.postResend(data)
       .subscribe(
         () => {
-          console.log("Lena")
-          //this.router.navigate([`/login`])
-          this.notes = "Has been sent to your email"
+          // this.router.navigate([`/login`])
+          this.notes = 'Has been sent to your email';
         },
         err => {
-          console.log(err)
           this.networkingErr = true;
-          this.message = err.message
-          if (this.message === "This account has already been verified. Please log in.") {
-            this.router.navigate([`/login`])
+          this.message = err.message;
+          if (this.message === 'This account has already been verified. Please log in.') {
+            this.router.navigate([`/login`]);
           }
-
         }
-      )
-
+      );
   }
-
 }

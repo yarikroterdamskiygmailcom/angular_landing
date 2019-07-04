@@ -59,7 +59,6 @@ export class CardComponent implements OnInit, OnDestroy {
           await this.data.createCard(newCard)
             .subscribe(
               res => {
-                console.log(res);
                 this.router.navigate([`/profile/${this.activeUser}`], {
                   queryParams: {
                     success: true

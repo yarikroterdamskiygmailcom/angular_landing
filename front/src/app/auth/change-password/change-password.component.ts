@@ -11,11 +11,11 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class ChangePasswordComponent implements OnInit {
   form: FormGroup;
-  useremail = "";
-  verifiedToken = "";
+  useremail = '';
+  verifiedToken = '';
   networkingErr = false;
-  message = "";
-  notes = "";
+  message = '';
+  notes = '';
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -26,16 +26,14 @@ export class ChangePasswordComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.useremail = params['email'];
-          console.log(this.useremail)
+          this.useremail = params.email;
 
         }
       );
     this.route.queryParams.subscribe(params => {
-      this.verifiedToken = params['id'];
-      console.log(this.verifiedToken);
+      this.verifiedToken = params.id;
 
-    })
+    });
     this.form = new FormGroup({
       'password': new FormControl(null, [
         Validators.required,
@@ -45,52 +43,36 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("TOKEN", this.verifiedToken)
-    console.log("MAIL", this.useremail)
-    console.log(this.form.value.password)
-
     const data = {
       token: this.verifiedToken,
       email: this.useremail,
       password: this.form.value.password
-    }
+    };
     this.authService.changepass(data)
       .subscribe(
         (user) => {
-          this.router.navigate([`/login`])
+          this.router.navigate([`/login`]);
         },
         err => {
-          console.log(err)
           this.networkingErr = true;
-          this.message = err.message
-
+          this.message = err.message;
         }
-      )
-
+      );
   }
   resend() {
-    console.log("MAIL", this.useremail)
     const data = {
       email: this.useremail
-    }
+    };
     this.authService.postResend(data)
       .subscribe(
         () => {
-
           //this.router.navigate([`/login`])
-          this.notes = "Has been sent to your email"
+          this.notes = 'Has been sent to your email';
         },
         err => {
-          console.log(err)
           this.networkingErr = true;
-          this.message = err.message
-
-
+          this.message = err.message;
         }
-      )
-
+      );
   }
-
 }
-
-
