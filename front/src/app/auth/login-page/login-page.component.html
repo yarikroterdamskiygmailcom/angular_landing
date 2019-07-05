@@ -21,9 +21,9 @@
         id="email"
         name="password"
         class="general-input">
-      <span *ngIf="form.get('email').invalid && form.get('email').touched " class="text-danger">
-            <span *ngIf="form.get('email').errors['required']" translate>Enter email</span>
-            <span *ngIf="form.get('email').errors['email']" translate>Enter correct email</span>
+      <span *ngIf="form.get('email').invalid && form.get('email').touched ">
+            <span class="field-error" *ngIf="form.get('email').errors['required']" translate>Enter email</span>
+            <span class="field-error" *ngIf="form.get('email').errors['email']" translate>Enter correct email</span>
           </span>
     </div>
     <div class="form-group">
@@ -34,13 +34,13 @@
         id="password"
         name="password"
         class="general-input">
-      <span *ngIf="form.get('password').invalid && form.get('password').touched " class="text-danger">
-                  <span *ngIf="form.get('password').errors['required']" translate>Enter password </span>
-                  <span
-                    *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+      <span *ngIf="form.get('password').invalid && form.get('password').touched ">
+                  <span class="field-error" *ngIf="form.get('password').errors['required']"
+                        translate>Enter password </span>
+                  <span class="field-error"
+                        *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
                     Password length should be more than {{form.get('password').errors['minlength']['requiredLength']}}
                     characters.
-                    Now only {{form.get('password').errors['minlength']['actualLength']}} characters.
                   </span>
              </span>
     </div>
@@ -70,21 +70,22 @@
     <i class="fas fa-times"></i>
   </div>
   <h1 *ngIf="!notes" translate>Forgot your password</h1>
-<!--  <h1 *ngIf="notes" class="text-center container-fluid">{{notes}}</h1>-->
+  <!--  <h1 *ngIf="notes" class="text-center container-fluid">{{notes}}</h1>-->
   <form [formGroup]="otherForm" (ngSubmit)="onSend()">
     <div class="form-group forgot-group">
       <label for="email" translate>Email</label>
       <input class="general-input" formControlName="email" type="email" id="email" name="password">
       <span *ngIf="form.get('email').invalid && form.get('email').touched">
-        <span *ngIf="form('email').errors['required']" translate>Enter email </span>
-        <span *ngIf="otherForm('email').errors['email']" translate>Enter correct email</span>
+        <span class="field-error" *ngIf="form('email').errors['required']" translate>Enter email </span>
+        <span class="field-error" *ngIf="otherForm('email').errors['email']" translate>Enter correct email</span>
       </span>
     </div>
     <div class="forgot-password-annotation">
       <span>Enter the email address you used to sign in and we’ll send you a link to reset your password</span>
     </div>
     <button class="yellow-button yellow-button-container forgot-password-button"
-            type="submit" [disabled]="otherForm.invalid" translate>Send</button>
+            type="submit" [disabled]="otherForm.invalid" translate>Send
+    </button>
   </form>
 
   <p class="back-to-sign-in">

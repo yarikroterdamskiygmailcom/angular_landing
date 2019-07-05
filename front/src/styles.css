@@ -429,6 +429,14 @@ textarea {
   max-width: 186px !important;
 }
 
+.field-error{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: #F40D1D;
+  margin-top: 10px;
+}
+
 @media screen and (max-width: 560px) {
   .auth-card,
   .forgot-password-container {

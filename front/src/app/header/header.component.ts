@@ -67,11 +67,19 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
   openSignUp(topPosition = '450px') {
     this.signUpService.setEvent({signUp: true, signIn: false, top: topPosition});
     document.getElementById('sign-up-card').style.top = topPosition;
+    window.scrollTo({
+      top: 30,
+      behavior: 'smooth'
+    });
   }
 
   openSignIn(topPosition = '450px') {
     this.signUpService.setEvent({signUp: false, signIn: true, top: topPosition});
     document.getElementById('sign-in-card').style.top = topPosition;
+    window.scrollTo({
+      top: 30,
+      behavior: 'smooth'
+    });
   }
 
   closeSignUp() {

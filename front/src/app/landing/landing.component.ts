@@ -54,7 +54,7 @@ export class LandingComponent implements OnInit {
     e.preventDefault();
     this.signUpService.setEvent({signUp: true, top: '450px'});
     window.scrollTo({
-      top: 90,
+      top: 30,
       behavior: 'smooth'
     });
   }
