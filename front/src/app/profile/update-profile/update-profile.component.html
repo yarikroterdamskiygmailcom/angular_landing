@@ -58,7 +58,7 @@
             <input type="file" id="imagePath" formControlName="imagePath"
                    #input (change)="onfileUpload($event)" class="hidden">
             <div class="avatar-placeholder">
-              <img src="http://192.168.88.194:4000{{imagePreview}}" *ngIf="imageUploaded" alt="no image">
+              <img src="{{env.apiUrl}}{{imagePreview}}" *ngIf="imageUploaded" alt="no image">
             </div>
             <p class="load-avatar-button" (click)="triggerClick()">Load the image</p>
           </div>

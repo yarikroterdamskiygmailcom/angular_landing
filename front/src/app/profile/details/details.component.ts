@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {TariffService} from 'src/app/shared/tariff.service';
 import * as moment from 'moment-timezone';
 import {SignUpService} from '../../shared/sign-up.service';
+import {environment} from '../../../environments/environment';
 
 
 @Component({
@@ -30,9 +31,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   notes = '';
   profileTab = true;
   updatedPlan = false;
+  env;
 
 
   ngOnInit() {
+    this.env = environment;
     this.signUpService.setEvent({activeTab: 1});
     this.route.params
       .subscribe(

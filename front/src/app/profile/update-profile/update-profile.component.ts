@@ -38,8 +38,10 @@ export class UpdateProfileComponent implements OnInit {
   @ViewChild('input') inputRef: ElementRef;
   newImage: any = '';
   updatedProfile;
+  env;
 
   ngOnInit() {
+    this.env = environment;
     this.signUpService.setEvent({activeTab: 1});
     this.getTimeZones();
     this.route.params
