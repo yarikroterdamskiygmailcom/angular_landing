@@ -77,11 +77,11 @@
         </a>
         <div>
           <ul class="nav-links">
-            <li><a href="#" class="active" (click)="scrollTo($event, 'landing-banner')">Home</a></li>
-            <li><a href="#" (click)="scrollTo($event, 'about-service')">About service</a></li>
-            <li><a href="#" (click)="scrollTo($event, 'our-service')">Prices</a></li>
-            <li><a href="#" (click)="scrollTo($event, 'faq-section')">FAQ</a></li>
-            <li><a href="#" (click)="scrollTo($event, 'contact-us')">Contact us</a></li>
+            <li><a href="#" [ngClass]="headerActive === 1 ? 'active' : ''" (click)="scrollTo($event, 'landing-banner', false, 1)">Home</a></li>
+            <li><a href="#" [ngClass]="headerActive === 2 ? 'active' : ''" (click)="scrollTo($event, 'about-service', false, 2)">About service</a></li>
+            <li><a href="#" [ngClass]="headerActive === 3 ? 'active' : ''" (click)="scrollTo($event, 'our-service', false, 3)">Prices</a></li>
+            <li><a href="#" [ngClass]="headerActive === 4 ? 'active' : ''" (click)="scrollTo($event, 'faq-section', false, 4)">FAQ</a></li>
+            <li><a href="#" [ngClass]="headerActive === 5 ? 'active' : ''" (click)="scrollTo($event, 'contact-us', false, 5)">Contact us</a></li>
           </ul>
         </div>
         <div>
@@ -120,11 +120,11 @@
   </div>
   <div class="mobile-dropdown-menu" [ngClass]="menuIsOpen ? 'dropdown-open' : ''">
     <ul>
-      <li><a href="#" (click)="scrollTo($event, 'landing-banner', true)">Home</a></li>
-      <li><a href="#" (click)="scrollTo($event, 'about-service', true)">About service</a></li>
-      <li><a href="#" (click)="scrollTo($event, 'our-service', true)">Prices</a></li>
-      <li><a href="#" (click)="scrollTo($event, 'faq-section', true)">FAQ</a></li>
-      <li><a href="#" (click)="scrollTo($event, 'contact-us', true)">Contact us</a></li>
+      <li><a href="#" [ngClass]="headerActive === 1 ? 'active' : ''" (click)="scrollTo($event, 'landing-banner', true, 1)">Home</a></li>
+      <li><a href="#" [ngClass]="headerActive === 2 ? 'active' : ''" (click)="scrollTo($event, 'about-service', true, 2)">About service</a></li>
+      <li><a href="#" [ngClass]="headerActive === 3 ? 'active' : ''" (click)="scrollTo($event, 'our-service', true, 3)">Prices</a></li>
+      <li><a href="#" [ngClass]="headerActive === 4 ? 'active' : ''" (click)="scrollTo($event, 'faq-section', true, 4)">FAQ</a></li>
+      <li><a href="#" [ngClass]="headerActive === 5 ? 'active' : ''" (click)="scrollTo($event, 'contact-us', true, 5)">Contact us</a></li>
       <li>
         <div class="mobile-menu-buttons">
           <button class="yellow-button-container yellow-button" (click)="openSignIn('50%')">Sign In</button>

@@ -11,7 +11,7 @@
       <div class="match-info-card">
         <div class="card-info">
           <p class="card-title">Your current tariff plan</p>
-          <p class="card-plan">Free Plan</p>
+          <p class="card-plan">{{ tariffName }}</p>
           <p class="card-plan-footer">Analytic info below is limited</p>
         </div>
         <div class="card-plan-button-wrapper">
@@ -34,8 +34,11 @@
       </div>
     </div>
 
+    <div class="spinner-wrapper" *ngIf="spinner">
+      <img src="assets/img/icons/spinner.svg" alt=" ">
+    </div>
 
-    <div class="match-main-info-block">
+    <div *ngIf="matchInfo" class="match-main-info-block">
       <div class="country-section">
         <p class="info-block-title">Country</p>
         <p>{{matchInfo.data.match_data.country}}</p>
@@ -54,7 +57,7 @@
       </div>
     </div>
 
-    <div class="info-cards-wrapper">
+    <div *ngIf="matchInfo" class="info-cards-wrapper">
       <div class="table-card">
         <div class="table-card-title">
           <h3>Full time probabilities</h3>
@@ -275,7 +278,7 @@
       </div>
     </div>
 
-    <div class="info-cards-wrapper">
+    <div *ngIf="matchInfo" class="info-cards-wrapper">
       <div class="table-card-wrapper">
         <div class="table-card">
           <div class="table-card-title">
@@ -549,122 +552,6 @@
       </div>
     </div>
 
-    <!--    <mat-card>-->
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr class="green">-->
-    <!--          <th class="central" colspan="8">Full time probabilities</th>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--      </table>-->
-    <!--    </mat-card>-->
-
-
-    <!--    <mat-card>-->
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr>-->
-    <!--          <th class="central green" colspan="8">Full time stats data</th>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
-    <!--        <tr>-->
-    <!--          <th class="central violet" colspan="6">Team result last five matches</th>-->
-
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <th class="green">{{firstPlayer}}</th>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['1']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['2']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['3']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['4']}}</td>-->
-
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <th class="green">{{secondPlayer}}</th>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.form.won_draw_lost.last_matches['0']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['1']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['2']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['3']}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.form.won_draw_lost.last_matches['4']}}</td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--      </table>-->
-    <!--    </mat-card>-->
-
-    <!--    <mat-card>-->
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr class="violet">-->
-    <!--          <th colspan="3">season results</th>-->
-    <!--          <td scope="col" colspan="3">season average goals</td>-->
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <th colspan="1"></th>-->
-    <!--          <th scope="col">won</th>-->
-    <!--          <td scope="col">draw</td>-->
-    <!--          <td scope="col">lost</td>-->
-    <!--          <td scope="col">scored</td>-->
-    <!--          <td scope="col">conceded</td>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
-    <!--        <tr>-->
-    <!--          <th class="green" scope="row">{{firstPlayer}}</th>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.won}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.draw}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.home.full_time.won_draw_lost.lost}}</td>-->
-    <!--          <td>{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_scored).toFixed(2)}}</td>-->
-    <!--          <td>{{(matchInfo.data.calculation_data.current_season.home.full_time.goals.avg_conceded).toFixed(2)}}</td>-->
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <th class="green" scope="row">{{secondPlayer}}</th>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.won}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.draw}}</td>-->
-    <!--          <td>{{matchInfo.data.calculation_data.current_season.away.full_time.won_draw_lost.lost}}</td>-->
-    <!--          <td>{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_scored).toFixed(2)}}</td>-->
-    <!--          <td>{{(matchInfo.data.calculation_data.current_season.away.full_time.goals.avg_conceded).toFixed(2)}}</td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--      </table>-->
-    <!--    </mat-card>-->
-
-    <!--    <mat-card>-->
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr>-->
-    <!--          <th class="central violet" scope="row" colspan="7">Over/Under last five matches form</th>-->
-
-    <!--        </tr>-->
-    <!--        </thead>-->
-
-    <!--      </table>-->
-    <!--    </mat-card>-->
-
-    <!--    <mat-card>-->
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr>-->
-    <!--          <th class="central violet" scope="row" colspan="4">Suggested Correct Scores</th>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
-    <!--        <tr>-->
-    <!--          <th>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.home}}-->
-    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.ff.away}}</th>-->
-    <!--          <td>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.home}}-->
-    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.fc.away}}</td>-->
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <th>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.home}}-->
-    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cf.away}}</th>-->
-    <!--          <td>{{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.home}}-->
-    <!--            - {{matchInfo.data.probabilities.current_season.full_time.suggested_scores.cc.away}}</td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--      </table>-->
-    <!--    </mat-card>-->
   </div>
 </div>
 <app-footer></app-footer>

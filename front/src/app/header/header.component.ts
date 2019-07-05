@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
   signInOpen = false;
   langDrop = false;
   emailSend = false;
+  headerActive = 1;
   activeTab;
   userId;
 
@@ -96,8 +97,9 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
     this.translateService.use(language);
   }
 
-  scrollTo(e, el, close = false) {
+  scrollTo(e, el, close = false, active) {
     e.preventDefault();
+    this.headerActive = active;
 
     const element = document.getElementById(el);
     window.scrollTo({

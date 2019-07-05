@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {Profile} from '../../shared/models/profile.model';
 import * as moment from 'moment-timezone';
 import {SignUpService} from '../../shared/sign-up.service';
+import {environment} from '../../../environments/environment';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class UpdateProfileComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
-              private signUpService: SignUpService) {}
+              private signUpService: SignUpService,) {}
 
   form;
   private subscription: Subscription;
@@ -55,7 +56,7 @@ export class UpdateProfileComponent implements OnInit {
       name: [null, [Validators.required, Validators.minLength(3)]],
       timezone: [null, [Validators.required]],
       imagePath: [''],
-      gender: [null, [Validators.required, Validators.minLength(4)]],
+      gender: [null, [Validators.required]],
       birthDate: ['']
     });
   }
