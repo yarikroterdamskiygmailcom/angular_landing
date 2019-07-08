@@ -15,25 +15,23 @@ First of all you need to install
 #Backend
 
 1. clone the repository
-2. Go into back derictory
+2. Go into back directory
 3. npm install
 4. create in root of folder back .env file and enter your existing gmail and  your pass from this email
 You need this to test how email confirmation works
 example 
 USER_NAME = test@gmail.com
 PASSWORD = 123456
-4.  For correct work check this your gmail  Let less secure apps access your account
+4.  For correct work check this your Gmail  Let less secure apps access your account
 https://support.google.com/accounts/answer/6010255?hl=en
 
 5. I did not remove keys for stripe and paypal, you are free to use them for testing
 6. When you will test paypal payment
 you will be asked to enter test login and pass
-olena.topchii-buyer@gmail.com
-pass 10latapu
 
 for stripe you can use test card number 4242 4242 4242 4242
 
-7. Also, add tariff plans to the base you can do it wia postment
+7. Also, add tariff plans to the base you can do it wia postmen
 http://API_URL/matches/tariff/create
 
 8.  npm run dev

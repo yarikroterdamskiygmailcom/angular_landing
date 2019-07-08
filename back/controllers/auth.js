@@ -233,8 +233,8 @@ module.exports.checkEmail = async function (req, res) {
 
         service: 'Gmail',
         auth: {
-          user: 'test', // Please, set Your data
-          pass: 'test' // Please, set Your data
+            user: process.env.USER_NAME,
+            pass: process.env.PASSWORD
         }
       });
 

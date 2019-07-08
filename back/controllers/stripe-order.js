@@ -1,4 +1,4 @@
-const stripe = require('stripe')('sk_test_rKZE4DGbWQWLPDy2JlvcOoFT');
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 const errorHandler = require('../utils/ErrorHandler');
 const Tariff = require('../models/Tariff');
 const Order = require('../models/Order')

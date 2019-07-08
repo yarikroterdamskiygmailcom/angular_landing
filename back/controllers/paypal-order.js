@@ -7,8 +7,8 @@ const Profile = require('../models/Profile')
 
 paypal.configure({
   mode: 'sandbox', // Sandbox or live
-  client_id: 'AX0iUXLaZovYw-vqyEwHYofZooXCllutOi4vme6xbhsE9zVrUi6Ok495DVRiq8TPtR9AaFhUH7zLfklE',
-  client_secret: 'EFR4fTF2EJNzttav9RpdDOUf4xXCoHoIFlD6j09oPrCO2tNyoi_yymWfNkrPoDnydbuO0SsfbmNfzFCs'
+  client_id: process.env.PAYPAL_CLIENT_ID,
+  client_secret: process.env.PAYPAL_CLIENT_SECRET
 });
 
 //const order2 = {};
